@@ -55,6 +55,12 @@ tr.Feiertag td
     background-color: grey;
 }
 
+span.Feiertag
+{
+    color: white;
+    background-color: grey;
+}
+
 td
 {
     height: 20px;
