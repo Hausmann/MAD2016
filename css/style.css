@@ -30,6 +30,8 @@ main
     margin-left: auto;
     margin-right: auto;
     background: #ffffff;
+    border: 1px solid #B2B2B2;
+    border-top: 0 !important;
     box-shadow: 6px 0 4px -4px #ccc , -6px 0 4px -4px #ccc;
     -moz-box-shadow: 6px 0 4px -4px #ccc, -6px 0 4px -4px #ccc;
     -webkit-box-shadow: 6px 0 4px -4px #ccc, -6px 0 4px -4px #ccc;
