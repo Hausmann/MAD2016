@@ -1,20 +1,51 @@
 body
 {
     margin: 0;
+    background: #f1f1f1;
+    font-family: Verdana;
 }
 
 header
 {
     width: 100vw;
-    height: 10vh;
-    background-color: red;
+    height: 110px;
+    background-color: #fff;
 }
 
 main
 {
     width: 80vw;
     min-width: 800px;
+    min-height: 200px;
     margin-left: auto;
     margin-right: auto;
-    background: blue;
+    background: #ffffff;
+    padding: 10px;
+    box-shadow: 6px 0 4px -4px #ccc , -6px 0 4px -4px #ccc;
+    -moz-box-shadow: 6px 0 4px -4px #ccc, -6px 0 4px -4px #ccc;
+    -webkit-box-shadow: 6px 0 4px -4px #ccc, -6px 0 4px -4px #ccc;}
+}
+
+.menuButton
+{
+    display: inline;
+    padding: 4px 10px 4px 10px;
+}
+
+#logo img {
+    width: 90px;
+    height: 90px;
+    margin-top: 10px;
+}
+#logo
+{
+    margin-left: 10vw;
+    float: left;
+}
+
+#userID
+{
+    float: right;
+    margin-right: 10vw;
+    margin-top: 45px;
 }
