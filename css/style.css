@@ -7,13 +7,19 @@ body
 
 header
 {
+    position: absolute;
     width: 100vw;
+    top: 0;
     height: 110px;
-    background-color: #fff;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
 }
 
 main
 {
+    margin-top: 110px;
     width: 80vw;
     min-width: 800px;
     min-height: 200px;
@@ -23,13 +29,7 @@ main
     padding: 10px;
     box-shadow: 6px 0 4px -4px #ccc , -6px 0 4px -4px #ccc;
     -moz-box-shadow: 6px 0 4px -4px #ccc, -6px 0 4px -4px #ccc;
-    -webkit-box-shadow: 6px 0 4px -4px #ccc, -6px 0 4px -4px #ccc;}
-}
-
-.menuButton
-{
-    display: inline;
-    padding: 4px 10px 4px 10px;
+    -webkit-box-shadow: 6px 0 4px -4px #ccc, -6px 0 4px -4px #ccc;
 }
 
 #logo img {
