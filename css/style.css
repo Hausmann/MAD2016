@@ -3,6 +3,7 @@ body
     margin: 0;
     background: #E8E8E8;
     font-family: Verdana;
+    overflow-x: hidden;
 }
 
 header
@@ -59,6 +60,11 @@ footer
     border-bottom-right-radius: 5px;
 }
 
+#footerContainer
+{
+    height: 100px;
+}
+
 #shadow
 {
     width: 80vw;
@@ -96,7 +102,7 @@ footer
 nav
 {
     float: left;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .menuButton, .menuButtonFirst, .menuButtonFirstActive, .menuButtonActive
