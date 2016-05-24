@@ -10,7 +10,8 @@ header
     position: absolute;
     top: 0;
     width: 100vw;
-    height: 110px;
+    min-width: 1040px;
+    height: 100px;
     background: rgb(255,255,255);
     background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(247,247,247,1) 100%);
     background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(247,247,247,1) 100%);
@@ -23,7 +24,7 @@ header
 main
 {
     padding: 10px;
-    min-width: 400px;
+    min-width: 1040px;
     min-height: 200px;
     margin-top: 120px;
     margin-left: auto;
@@ -45,6 +46,7 @@ footer
     background-color: #666;
     color: #fff;
     height: 40px;
+    min-width: 1040px;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
@@ -66,14 +68,14 @@ footer
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
     -webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 #logo img {
     width: 90px;
     height: 90px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 #logo
@@ -86,6 +88,32 @@ border-radius: 5px;
 {
     float: right;
     margin-right: 10vw;
-    margin-top: 45px;
+    margin-top: 40px;
     text-shadow: 0 1px 0 #fff;
+}
+
+nav
+{
+    float: left;
+    margin-left: 20px;
+}
+
+.menuButton, .menuButtonFirst
+{
+    float: left;
+    padding: 40px 20px;
+}
+
+.menuButton, .menuButtonFirst
+{
+    border-right: 1px solid;
+-moz-border-bottom-colors: #000 #fff #777 #888 #999 #aaa #bbb #ccc;
+-moz-border-top-colors: #000 #fff #777 #888 #999 #aaa #bbb #ccc;
+-moz-border-left-colors: #000 #fff #777 #888 #999 #aaa #bbb #ccc;
+-moz-border-right-colors: #000 #fff #777 #888 #999 #aaa #bbb #ccc;
+}
+
+.menuButtonFirst
+{
+    border-left: 1px solid #666;
 }
