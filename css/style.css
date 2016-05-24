@@ -102,7 +102,7 @@ nav
 .menuButton, .menuButtonFirst, .menuButtonFirstActive, .menuButtonActive
 {
     float: left;
-    padding: 40px 20px 39px 20px;
+    padding: 40px 15px 39px 15px;
 }
 
 .menuButton, .menuButtonFirst, .menuButtonFirstActive
