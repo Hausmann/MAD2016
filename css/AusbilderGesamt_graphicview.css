@@ -2,12 +2,19 @@
 
 .berufsschule
 {
-    background-color: aquamarine;
+    background-color: deepskyblue;
 }
 
-.tableazubi
+.einsatz
 {
-    border: 0px;
+    background-color: chartreuse;
+}
 
+table
+{
+    border: 0;
+    border-width: 0;
+    border-style: none;
+    border-spacing: none;
     text-align: center;
 }
