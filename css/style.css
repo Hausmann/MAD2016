@@ -3,6 +3,7 @@ body
     margin: 0;
     background: #E8E8E8;
     font-family: Verdana;
+    font-size: 14px;
     overflow-x: hidden;
 }
 
@@ -22,10 +23,9 @@ header
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
 }
 
-main
+#main
 {
     padding: 10px;
-    min-width: 1040px;
     min-height: 200px;
     margin-top: 120px;
     margin-left: auto;
@@ -47,7 +47,6 @@ footer
     background-color: #666;
     color: #fff;
     height: 40px;
-    min-width: 1040px;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
@@ -67,8 +66,7 @@ footer
 
 #shadow
 {
-    width: 80vw;
-    min-width: 1040px;
+    width: 92vw;
     margin-left: auto;
     margin-right: auto;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
@@ -87,16 +85,21 @@ footer
 
 #logo
 {
-    margin-left: 10vw;
+    margin-left: 4vw;
     float: left;
 }
 
 #userID
 {
     float: right;
-    margin-right: 10vw;
+    margin-right: 4vw;
     margin-top: 40px;
     text-shadow: 0 1px 0 #fff;
+}
+#infoText
+{
+    float:left;
+    padding-right: 5px;
 }
 
 nav
@@ -108,7 +111,7 @@ nav
 .menuButton, .menuButtonFirst, .menuButtonFirstActive, .menuButtonActive
 {
     float: left;
-    padding: 40px 15px 39px 15px;
+    padding: 41px 15px 41px 15px;
 }
 
 .menuButton, .menuButtonFirst, .menuButtonFirstActive
