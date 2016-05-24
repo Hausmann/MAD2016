@@ -22,9 +22,7 @@
 
 table
 {
-    border: 0;
-    border-width: 0;
-    border-style: none;
-    border-spacing: none;
     text-align: center;
+    border-collapse: collapse;
 }
+
