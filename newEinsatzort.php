@@ -2,15 +2,16 @@
 <html lang="de">
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/style_flex.css" />
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
         <title>Neuen Einsatzort erstellen</title>
     </head>
     <body>
+        <?php include "PHP\includes.php"; ?>
         <header>
             <div id="logo"><a href="index.html"><img src="img/Datev_Logo.png"/></a></div>
             <div id="userID">
-                Angemeldet als: Mustermann, Max
+                <div id="infoText">Angemeldet als: </div>Mustermann, Max
             </div>
             <nav>
                 <div class="menuButtonFirst"><a href="index.html">Startseite</a></div>
@@ -22,16 +23,13 @@
             </nav>
         </header>
         <div id="shadow">
-            <main>
+            <div id ="main">
                 <h1>Neuen Einsatzort erstellen</h1>
-                <form action="#" method="post">
+                <form action="createEinsatzort.php" method="post">
                     <p>KOE: <input type="text" name="koe" /></p>
                     <p>Beauftragter:
                         <select name="beauftragter">
-                            <option value="person1">Person1</option>
-                            <option value="person2">Person2</option>
-                            <option value="person3">Person3</option>
-                            <option value="person4">Person4</option>
+                            <?php dbqueryReturnOption("192.168.1.143", "root", "", "einsatzplanungdb", "SELECT personID, Nachname, Vorname FROM personen WHERE rolleID = 2"); ?>
                         </select>
                     </p>
                     <p>Max Stellen: <input type="text" name="stellen" /></p>
@@ -39,7 +37,7 @@
                     <textarea id="text" name="beschreibung" cols="35" rows="4"></textarea>
                     <p><input type="submit" value="neuen Einsatzort erstellen"/></p>
                 </form>
-            </main>
+            </div>
             <footer>
                 Footer
             </footer>

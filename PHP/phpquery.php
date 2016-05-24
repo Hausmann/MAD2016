@@ -10,13 +10,13 @@
             include "includes.php";
 
             //Alle Informationen aus der Tabelle Personen entnehmen
-            dbquery("localhost", "root", "", "einsatzplanungdb", "SELECT * FROM personen");
+            dbquery("192.168.1.143", "root", "", "einsatzplanungdb", "SELECT * FROM personen");
 
             //Alle Personen mit Rollenbezeichnung auswählen
             $query1 = "SELECT p.nachname, p.vorname, p.personalnummer, r.bezeichnung FROM personen as p
                         INNER JOIN rollen as r
                         ON p.rolleID = r.rolleID";
-            dbquery("localhost", "root", "", "einsatzplanungdb", $query1);
+            dbquery("192.168.1.143", "root", "", "einsatzplanungdb", $query1);
 
             //Alle Azubis mit Ausbildungsberuf auswählen
             $query2 = "SELECT p.nachname, p.vorname, p.personalnummer, r.bezeichnung, b.bezeichnung FROM azubis as a
@@ -28,7 +28,7 @@
 
                         INNER JOIN berufe as b
                         ON b.BerufID = a.aBerufID";
-            dbquery("localhost", "root", "", "einsatzplanungdb", $query2);
+            dbquery("192.168.1.143", "root", "", "einsatzplanungdb", $query2);
 
             //Alle Azubis mit Ausbildungsberuf auswählen
             $query3 = "SELECT p.nachname, p.vorname, p.personalnummer,  b.bezeichnung, k.koe, e.datumVon, e.datumBis FROM azubis as a
@@ -43,7 +43,7 @@
 
                         INNER JOIN abteilungen as k
                         ON e.abteilungID = k.abteilungID";
-            dbquery("localhost", "root", "", "einsatzplanungdb", $query3);
+            dbquery("192.168.1.143", "root", "", "einsatzplanungdb", $query3);
         ?>
     </body>
 </html>
