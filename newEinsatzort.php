@@ -2,7 +2,7 @@
 <html lang="de">
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/style_flex.css" />
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
         <title>Neuen Einsatzort erstellen</title>
     </head>
@@ -11,7 +11,7 @@
         <header>
             <div id="logo"><a href="index.html"><img src="img/Datev_Logo.png"/></a></div>
             <div id="userID">
-                Angemeldet als: Mustermann, Max
+                <div id="infoText">Angemeldet als: </div>Mustermann, Max
             </div>
             <nav>
                 <div class="menuButtonFirst"><a href="index.html">Startseite</a></div>
@@ -23,7 +23,7 @@
             </nav>
         </header>
         <div id="shadow">
-            <main>
+            <div id ="main">
                 <h1>Neuen Einsatzort erstellen</h1>
                 <form action="createEinsatzort.php" method="post">
                     <p>KOE: <input type="text" name="koe" /></p>
@@ -37,7 +37,7 @@
                     <textarea id="text" name="beschreibung" cols="35" rows="4"></textarea>
                     <p><input type="submit" value="neuen Einsatzort erstellen"/></p>
                 </form>
-            </main>
+            </div>
             <footer>
                 Footer
             </footer>

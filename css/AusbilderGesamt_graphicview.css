@@ -1,4 +1,4 @@
-@import url("style.css");
+@import url("style_flex.css");
 
 .berufsschule
 {
@@ -10,9 +10,18 @@
     background-color: chartreuse;
 }
 
+.urlaub
+{
+    background-color: darkblue;
+}
+
+.schulung
+{
+    background-color: coral;
+}
+
 table
 {
     text-align: center;
     border-collapse: collapse;
 }
-

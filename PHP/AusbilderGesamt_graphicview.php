@@ -12,7 +12,7 @@
         <header>
             <div id="logo"><a href="index.html"><img src="img/Datev_Logo.png"/></a></div>
             <div id="userID">
-                <div id="infoText">Angemeldet als: </div>Mustermann, Max
+                Angemeldet als: Mustermann, Max
             </div>
             <nav>
                 <div class="menuButtonFirst"><a href="index.html">Startseite</a></div>
@@ -25,25 +25,45 @@
         </header>
 
         <div id="shadow">
-		<div id ="main">
+		<main>
 			<p>Inhaltsbereich</p>
-            <div class="tableazubi">
-            <table>
-                <tr>
-                    <th style="width:16vw">KW</th>
-                    <th style="width:7vw">10</th>
-                    <th style="width:7vw">11</th>
-                    <th style="width:7vw">12</th>
-                    <th style="width:7vw">13</th>
-                    <th style="width:7vw">14</th>
-                    <th style="width:7vw">15</th>
-                    <th style="width:7vw">16</th>
-                    <th style="width:7vw">17</th>
-                    <th style="width:7vw">18</th>
-                    <th style="width:7vw">19</th>
-                    <th style="width:7vw">20</th>
-                    <th style="width:7vw">21</th>
-                </tr>
+            <?php
+                $db_link = mysqli_connect ("192.168.1.143:81", "root", "", "einsatzplanungdb");
+
+                if (!$db_link)
+                {
+                    die ('Connect Error:' .mysqli_connect_errno());
+                }
+
+                //Datenbakquery
+                $str_query = "SELECT p.vorname, p.nachname, koe.koe, e.datumVon, e.datumBis FROM personen AS p
+                                    JOIN azubis AS a
+                                    ON a.personID = p.personID
+                                    JOIN einsaetze AS e
+                                    ON e.azubiID = a.azubiID
+                                    JOIN abteilungen AS koe
+                                    ON koe.abteilungID = e.abteilungID";
+
+                //Datenbankabfrage
+                $result = mysqli_query($db_link, $str_query);
+
+                $startkw = 1;
+
+                echo "<tale>
+                        <tr>
+                            <th style='width:16vw'>KW</th>";
+                for ($startkw; $startkw <= $startkw + 11; $startkw++)
+                {
+                    echo "<th style='width:7vw'>"$startkw"</th>";
+                }
+
+                echo "<tr>"
+
+                switch $abteilung
+                        "<td class='"">";
+
+
+            ?>
                 <tr>
                     <td>Azubi 1</td>
                     <td class="berufsschule"> </td>
@@ -106,7 +126,7 @@
                 </tr>
             </table>
             </div>
-		</div>
+		</main>
         <footer>
             Fußbereich
         </footer>
