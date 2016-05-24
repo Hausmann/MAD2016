@@ -1,4 +1,5 @@
 <?php
+    //Gibt den Inhalt als HTML-Tabelle zurück
 	function dbquery($dbserver, $dbuser, $dbpassword, $dbDatabase, $str_query)
 	{
 		$db_link = mysqli_connect ($dbserver, $dbuser, $dbpassword, $dbDatabase);
@@ -40,4 +41,61 @@
 
         mysqli_close($db_link);
 	}
+
+
+    //Verbindung zum Datenbankserver herstellen
+    function connectDatabase($dbserver, $dbuser, $dbpassword, $dbDatabase)
+    {
+        $db_link = mysqli_connect ($dbserver, $dbuser, $dbpassword, $dbDatabase);
+
+		if (!$db_link)
+		{
+			die('Connect Error:' . mysqli_connect_errno());
+		}
+
+        return $db_link;
+    }
+
+    //Gibt den Inhalt als return zurück
+    function dbqueryReturnOption($dbserver, $dbuser, $dbpassword, $dbDatabase, $str_query)
+	{
+		$db_link = connectDatabase($dbserver, $dbuser, $dbpassword, $dbDatabase);
+
+		$result = mysqli_query ($db_link, $str_query);
+
+		if (!$result)
+		{
+			echo $message  = 'Ungültige Abfrage: ' . mysqli_error($db_link) . "\n";
+			die($message);
+		}
+
+		while ($row = mysqli_fetch_row($result))
+		{
+			$y = 1;
+            echo '<option value="' . $row[0] . '">';
+			while ($y < (count($row)))
+			{
+				echo utf8_encode($row[$y]) . " ";
+				$y = $y + 1;
+			}
+            echo '</option>';
+		}
+
+        mysqli_close($db_link);
+	}
+
+    function insertInto($dbserver, $dbuser, $dbpassword, $dbDatabase, $str_query)
+    {
+        $db_link = connectDatabase($dbserver, $dbuser, $dbpassword, $dbDatabase);
+
+        $result = mysqli_query ($db_link, $str_query);
+
+		if (!$result)
+		{
+			echo $message  = 'Ungültige Abfrage: ' . mysqli_error($db_link) . "\n";
+			die($message);
+		}
+
+        return true;
+    }
 ?>
