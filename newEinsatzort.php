@@ -29,7 +29,7 @@
                     <p>KOE: <input type="text" name="koe" /></p>
                     <p>Beauftragter:
                         <select name="beauftragter">
-                            <?php dbqueryReturnOption("192.168.1.143", "root", "", "einsatzplanungdb", "SELECT personID, Nachname, Vorname FROM personen WHERE rolleID = 2"); ?>
+                            <?php dbqueryReturnOption("192.168.1.143", "root", "", "einsatzplanungdb", "SELECT personID, Nachname, Vorname FROM personen WHERE rolleID = 2 ORDER BY Nachname ASC"); ?>
                         </select>
                     </p>
                     <p>Max Stellen: <input type="text" name="stellen" /></p>
