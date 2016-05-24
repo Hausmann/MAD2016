@@ -98,22 +98,34 @@ nav
     margin-left: 20px;
 }
 
-.menuButton, .menuButtonFirst
+.menuButton, .menuButtonFirst, .menuButtonFirstActive, .menuButtonActive
 {
     float: left;
-    padding: 40px 20px;
+    padding: 40px 20px 39px 20px;
 }
 
-.menuButton, .menuButtonFirst
+.menuButton, .menuButtonFirst, .menuButtonFirstActive
 {
-    border-right: 1px solid;
--moz-border-bottom-colors: #000 #fff #777 #888 #999 #aaa #bbb #ccc;
--moz-border-top-colors: #000 #fff #777 #888 #999 #aaa #bbb #ccc;
--moz-border-left-colors: #000 #fff #777 #888 #999 #aaa #bbb #ccc;
--moz-border-right-colors: #000 #fff #777 #888 #999 #aaa #bbb #ccc;
+    border-right: 1px solid #999;
+    border-left: 1px solid #fff;
 }
 
-.menuButtonFirst
+.menuButtonFirst, .menuButtonFirstActive
 {
-    border-left: 1px solid #666;
+    border-left: 1px solid #999;
+}
+
+.menuButton a, .menuButtonFirst a, .menuButtonFirstActive a {
+    text-decoration: none;
+    color: /*rgb(106,198,3)*/ #666;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.menuButton a:hover, .menuButtonFirst a:hover {
+    color: #333;
+}
+
+.menuButtonFirst .active a, .menuButton .active a
+{
+    color: rgb(10,144,93);
 }
