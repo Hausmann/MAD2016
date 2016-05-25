@@ -28,7 +28,7 @@
 		<main>
 			<p>Inhaltsbereich</p>
             <?php
-                $db_link = mysqli_connect ("localhost:81", "root", "", "einsatzplanungdb");
+                $db_link = mysqli_connect ("192.168.1.143", "root", "", "einsatzplanungdb");
 
                 if (!$db_link)
                 {
