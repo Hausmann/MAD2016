@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AusbilderController.cs" />
     <Compile Include="Controllers\AzubiController.cs" />
     <Compile Include="Controllers\FachausbilderController.cs" />
     <Compile Include="Global.asax.cs">
