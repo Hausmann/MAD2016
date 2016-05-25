@@ -28,7 +28,7 @@
 		<main>
 			<p>Inhaltsbereich</p>
             <?php
-                $db_link = mysqli_connect ("192.168.1.143:81", "root", "", "einsatzplanungdb");
+                $db_link = mysqli_connect ("localhost:81", "root", "", "einsatzplanungdb");
 
                 if (!$db_link)
                 {
@@ -48,84 +48,36 @@
                 $result = mysqli_query($db_link, $str_query);
 
                 $startkw = 1;
+                $abteilung = "Berufsschule";
 
-                echo "<tale>
+                $test_datum = '2004-07-01';
+                $wochentage = array ('So','Mo','Di','Mi','Do','Fr','Sa');
+                list ($jahr, $monat, $tag) = split ('[-]', $test_datum) ;
+                $datum = getdate(mktime ( 0,0,0, $monat, $tag, $jahr));
+                $wochentag = $datum['wday'];
+                echo "<p>$wochentage[$wochentag]</p>";
+
+                echo "<table>
                         <tr>
                             <th style='width:16vw'>KW</th>";
                 for ($startkw; $startkw <= $startkw + 11; $startkw++)
                 {
-                    echo "<th style='width:7vw'>"$startkw"</th>";
+                    echo "<th style='width:7vw'>$startkw</th>";
+                }
+                echo "</tr>";
+                echo "<tr>";
+
+                switch ($abteilung)
+                {
+                    case 'Berufsschule':
+                        echo "<td class='berufsschule'> </td>";
                 }
 
-                echo "<tr>"
-
-                switch $abteilung
-                        "<td class='"">";
-
-
+                echo "</tr>";
+                echo "</table>";
             ?>
-                <tr>
-                    <td>Azubi 1</td>
-                    <td class="berufsschule"> </td>
-                    <td class="berufsschule"> </td>
-                    <td class="berufsschule"> </td>
-                    <td class="berufsschule"> </td>
-                    <td class="berufsschule"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                </tr>
-                <tr>
-                    <td>Azubi 2</td>
-                    <td class="berufsschule"> </td>
-                    <td class="berufsschule"> </td>
-                    <td class="berufsschule"> </td>
-                    <td class="berufsschule"> </td>
-                    <td class="berufsschule"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="schulung"> </td>
-                    <td class="schulung"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                </tr>
-                <tr>
-                    <td>Azubi 3</td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="schulung"> </td>
-                    <td class="schulung"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                </tr>
-                <tr>
-                    <td>Azubi 4</td>
-                    <td class="einsatz"> </td>
-                    <td class="urlaub"> </td>
-                    <td class="urlaub"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="einsatz"> </td>
-                    <td class="schulung"> </td>
-                    <td class="einsatz"> </td>
-                </tr>
-            </table>
-            </div>
+
+
 		</main>
         <footer>
             Fußbereich
