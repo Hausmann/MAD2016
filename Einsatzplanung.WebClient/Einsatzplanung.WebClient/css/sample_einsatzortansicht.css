@@ -1,0 +1,90 @@
+.Anwesend
+{
+    background-color: green;
+    color: white;
+}
+
+.Abwesend
+{
+    background-color: white;
+    color: black;
+}
+
+.Schulung
+{
+    background-color: mediumpurple;
+    color: white;
+}
+
+.gerade_KW
+{
+    background-color: lightgrey !important;
+    color: black !important;
+    padding: 3px 15px;
+    border: 1px solid black;
+}
+
+.ungerade_KW
+{
+    background-color: white !important;
+    color: black !important;
+    padding: 3px 15px;
+    border: 1px solid black;
+}
+
+.frei
+{
+    background-color: white;
+    color: black;
+}
+
+.einer_frei
+{
+    background-color: orange;
+    color: black;
+}
+
+.voll
+{
+    background-color: red;
+    color: white;
+}
+
+tr.Feiertag td
+{
+    color: grey;
+    background-color: grey;
+}
+
+span.Feiertag
+{
+    color: white;
+    background-color: grey;
+}
+
+td
+{
+    height: 20px;
+    text-align: center;
+    border-right: 1px solid black;
+}
+
+table, th
+{
+    border: 1px solid black;
+}
+
+th
+{
+    padding: 3px 15px;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+.Wochenstart
+{
+    border-top: 1px solid black;
+}
