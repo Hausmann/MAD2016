@@ -28,24 +28,16 @@
                     <br />
                 <h1>Einsatzortansicht</h1>
                 <content>
-                    <!-- Needs Refactoring. Dringend.. Datenbank läuft noch auf localhost. Wers ändern will, muss schon mit Strg + F danach suchen!  -->
-                    <!-- Navigation -->
-                    <?php
-                        $monthNames = array(
-                            "January",
-                            "February",
-                            "March",
-                            "April",
-                            "May",
-                            "June",
-                            "July",
-                            "August",
-                            "September",
-                            "October",
-                            "November",
-                            "December",);
 
-                        // Form, um Fachausbilder und Jahr zu wählen.
+
+                    <!-- Needs Refactoring. Dringend.
+                         Datenbank läuft noch auf localhost.
+                         Wers ändern will, muss schon mit Strg + F danach suchen!  -->
+                    <!-- Navigation -->
+
+
+                    <?php
+                        // Form, um Fachausbilder-Personalnummer und Jahr zu wählen.
                         echo "<p><form action=\"sample_einsatzortansicht.php\" method=\"post\">";
 
                             $personalnummer = "06105";
@@ -81,31 +73,10 @@
                             echo "</select>
                             </form></p>";
 
-                    ?>
 
-                    <!-- Einsatzortansicht -->
-                    <table>
-                        <!-- <tr>
-                            <th>Woche</th>
-                            <th>Anzahl</th>
-                            <th>Marco Fuchs</th>
-                            <th>Max Mustermann</th>
-                            <th>Anton Hammerpfichel</th>
-                        </tr> -->
-                        <?php
-                            function sort_einsaetze_nach_azubis_array($first, $second)
-                            {
-                                if($first[2] < $second[2])
-                                {
-                                    return -1;
-                                }
-                                else if($first[2] > $second[2])
-                                {
-                                    return 1;
-                                }
 
-                                return 0;
-                            }
+                            // Einsatzortansicht - Tabelle
+                            echo "<table>";
 
                             $weekdays = array("Mo","Di","Mi","Do","Fr");
 
@@ -123,7 +94,6 @@
                                     JOIN `personen` ON `azubis`.`azubiID` = eins.`azubiID` AND `personen`.`personalnummer` = $personalnummer AND `abteilungen`.`aBeauftragterID` = `personen`.`personID`
                                     WHERE ((eins.datumVon <= '$currentyear-1-1') AND (eins.datumBis >= '$currentyear-12-31')) OR ((eins.datumVon <= '$currentyear-1-1') AND (eins.datumBis >= '$currentyear-1-1')) OR ((eins.datumVon <= '$currentyear-12-31') AND (eins.datumBis >= '$currentyear-12-31')) OR ((eins.datumVon >= '$currentyear-1-1') AND (eins.datumBis <= '$currentyear-12-31'))
                                     ORDER BY `datumVon` ASC";
-                            // echo $query;
                             $result = mysqli_query($dblink, $query);
 
                             // Aufbau des Einsätze-Arrays: Assoziatives Array
@@ -136,11 +106,6 @@
                             {
                                 $max_Einsatzzahl = (int)$row['anzMaxStellen'];
 
-                                //echo "<br />";
-                                //foreach ($row as $key => $value) {
-                                    //echo "$key: $value";
-                                    //echo "<br />";
-                                //}
                                 if(!array_key_exists($row['azubiID'], $einsaetze_nach_azubis))
                                 {
                                     $einsaetze_nach_azubis[$row['azubiID']] = array($row['azubiID'], $row['nachname'], $row['vorname'], $row['datumVon'], $row['datumBis']);
@@ -151,28 +116,9 @@
                                 }
                             }
 
-                            //echo "<br />";
-                           // foreach ($einsaetze_nach_azubis as $key => $value) {
-                                //echo "$key: ";
-                            //    foreach ($value as $val) {
-                                    //echo "$val; ";
-                               // }
-                                //echo "<br />";
-                           // }
-
                             // Wir opfern den im Array eh vorhandenen Key und schlüsseln das Array auf ganz normale Indizes um, dabei sortieren wir es nach dem ersten Einsatztag der Azubis im gewählten Zeitraum
                             usort($einsaetze_nach_azubis, "sort_einsaetze_nach_azubis_array");
 
-                            //echo"<br />";
-                            //foreach ($einsaetze_nach_azubis as $key => $value) {
-                                //echo "$key: ";
-                                //foreach ($value as $val) {
-                                    //echo "$val; ";
-                                //}
-                                //echo"<br />";
-                            //}
-
-                            // (date("w", $timestamp) + 6) % 7
                             // January 2016
                             $dateVar = "31 Dec $currentyear";
 
@@ -305,180 +251,39 @@
                                 echo "</tr>";
                             }
 
-                        function dateLiesInIntervalArr($date, $intervalArr)
-                        {
-                            for ($i = 3; $i < count($intervalArr); $i++)
+                            function dateLiesInIntervalArr($date, $intervalArr)
                             {
-                                $compareDate = date_create_from_format('Y-m-j', $intervalArr[$i]);
+                                for ($i = 3; $i < count($intervalArr); $i++)
+                                {
+                                    $compareDate = date_create_from_format('Y-m-j', $intervalArr[$i]);
 
-                                if ($date < $compareDate && $i%2 == 1)
-                                {
-                                    return false;
+                                    if ($date < $compareDate && $i%2 == 1)
+                                    {
+                                        return false;
+                                    }
+                                    else if ($date <= $compareDate && $i%2 == 0)
+                                    {
+                                        return true;
+                                    }
                                 }
-                                else if ($date <= $compareDate && $i%2 == 0)
-                                {
-                                    return true;
-                                }
+
+                                return false;
                             }
 
-                            return false;
-                        }
+                            function sort_einsaetze_nach_azubis_array($first, $second)
+                            {
+                                if($first[2] < $second[2])
+                                {
+                                    return -1;
+                                }
+                                else if($first[2] > $second[2])
+                                {
+                                    return 1;
+                                }
+
+                                return 0;
+                            }
                         ?>
-                        <!-- <tr class="Wochenstart">
-                            <td rowspan="5" class="ungerade_KW">01.01.2016 - 05.01.2016 (KW 1)</td>
-                            <td class="frei">1</td>
-                            <td class="Anwesend">Mo</td>
-                            <td class="Abwesend">Mo</td>
-                            <td class="Abwesend">Mo</td>
-                        </tr>
-                        <tr>
-                            <td class="frei">1</td>
-                            <td class="Anwesend">Di</td>
-                            <td class="Abwesend">Di</td>
-                            <td class="Abwesend">Di</td>
-                        </tr>
-                        <tr>
-                            <td class="frei">1</td>
-                            <td class="Anwesend">Mi</td>
-                            <td class="Abwesend">Mi</td>
-                            <td class="Abwesend">Mi</td>
-                        </tr>
-                        <tr>
-                            <td class="frei">1</td>
-                            <td class="Anwesend">Do</td>
-                            <td class="Abwesend">Do</td>
-                            <td class="Abwesend">Do</td>
-                        </tr>
-                        <tr>
-                            <td class="frei">1</td>
-                            <td class="Anwesend">Fr</td>
-                            <td class="Abwesend">Fr</td>
-                            <td class="Abwesend">Fr</td>
-                        </tr>
-                        <tr class="Wochenstart Feiertag">
-                            <td rowspan="5" class="gerade_KW">08.01.2016 - 12.01.2016 (KW 2)</td>
-                            <td class="einer_frei">0</td>
-                            <td class="Anwesend">Mo</td>
-                            <td class="Anwesend">Mo</td>
-                            <td class="Abwesend">Mo</td>
-                        </tr>
-                        <tr class="Feiertag">
-                            <td class="einer_frei">0</td>
-                            <td class="Anwesend">Di</td>
-                            <td class="Anwesend">Di</td>
-                            <td class="Abwesend">Di</td>
-                        </tr>
-                        <tr>
-                            <td class="einer_frei">2</td>
-                            <td class="Anwesend">Mi</td>
-                            <td class="Anwesend">Mi</td>
-                            <td class="Abwesend">Mi</td>
-                        </tr>
-                        <tr>
-                            <td class="frei">1</td>
-                            <td class="Anwesend">Do</td>
-                            <td class="Schulung">Do</td>
-                            <td class="Abwesend">Do</td>
-                        </tr>
-                        <tr>
-                            <td class="frei">1</td>
-                            <td class="Anwesend">Fr</td>
-                            <td class="Schulung">Fr</td>
-                            <td class="Abwesend">Fr</td>
-                        </tr>
-                        <tr class="Wochenstart">
-                            <td rowspan="5" class="ungerade_KW">15.01.2016 - 19.01.2016 (KW 3)</td>
-                            <td class="einer_frei">2</td>
-                            <td class="Anwesend">Mo</td>
-                            <td class="Anwesend">Mo</td>
-                            <td class="Abwesend">Mo</td>
-                        </tr>
-                        <tr>
-                            <td class="einer_frei">2</td>
-                            <td class="Anwesend">Di</td>
-                            <td class="Anwesend">Di</td>
-                            <td class="Abwesend">Di</td>
-                        </tr>
-                        <tr>
-                            <td class="einer_frei">2</td>
-                            <td class="Anwesend">Mi</td>
-                            <td class="Anwesend">Mi</td>
-                            <td class="Abwesend">Mi</td>
-                        </tr>
-                        <tr>
-                            <td class="voll">3</td>
-                            <td class="Anwesend">Do</td>
-                            <td class="Anwesend">Do</td>
-                            <td class="Anwesend">Do</td>
-                        </tr>
-                        <tr>
-                            <td class="voll">3</td>
-                            <td class="Anwesend">Fr</td>
-                            <td class="Anwesend">Fr</td>
-                            <td class="Anwesend">Fr</td>
-                        </tr>
-                        <tr class="Wochenstart">
-                            <td rowspan="5" class="gerade_KW">22.01.2016 - 26.01.2016 (KW 4)</td>
-                            <td class="einer_frei">2</td>
-                            <td class="Abwesend">Mo</td>
-                            <td class="Anwesend">Mo</td>
-                            <td class="Anwesend">Mo</td>
-                        </tr>
-                        <tr>
-                            <td class="einer_frei">2</td>
-                            <td class="Abwesend">Di</td>
-                            <td class="Anwesend">Di</td>
-                            <td class="Anwesend">Di</td>
-                        </tr>
-                        <tr>
-                            <td class="einer_frei">2</td>
-                            <td class="Abwesend">Mi</td>
-                            <td class="Anwesend">Mi</td>
-                            <td class="Anwesend">Mi</td>
-                        </tr>
-                        <tr>
-                            <td class="einer_frei">2</td>
-                            <td class="Abwesend">Do</td>
-                            <td class="Anwesend">Do</td>
-                            <td class="Anwesend">Do</td>
-                        </tr>
-                        <tr>
-                            <td class="einer_frei">2</td>
-                            <td class="Abwesend">Fr</td>
-                            <td class="Anwesend">Fr</td>
-                            <td class="Anwesend">Fr</td>
-                        </tr>
-                        <tr class="Wochenstart">
-                            <td rowspan="5" class="ungerade_KW">29.01.2016 - 02.02.2016 (KW 5)</td>
-                            <td class="einer_frei">2</td>
-                            <td class="Abwesend">Mo</td>
-                            <td class="Anwesend">Mo</td>
-                            <td class="Anwesend">Mo</td>
-                        </tr>
-                        <tr>
-                            <td class="einer_frei">2</td>
-                            <td class="Abwesend">Di</td>
-                            <td class="Anwesend">Di</td>
-                            <td class="Anwesend">Di</td>
-                        </tr>
-                        <tr>
-                            <td class="einer_frei">2</td>
-                            <td class="Abwesend">Mi</td>
-                            <td class="Anwesend">Mi</td>
-                            <td class="Anwesend">Mi</td>
-                        </tr>
-                        <tr>
-                            <td class="frei">1</td>
-                            <td class="Abwesend">Do</td>
-                            <td class="Abwesend">Do</td>
-                            <td class="Anwesend">Do</td>
-                        </tr>
-                        <tr>
-                            <td class="frei">1</td>
-                            <td class="Abwesend">Fr</td>
-                            <td class="Abwesend">Fr</td>
-                            <td class="Anwesend">Fr</td>
-                        </tr> -->
                     </table>
                     <h2>Funktionsweise:</h2>
                     <p> Diese Ansicht kann ein Fachausbilder einer gewissen Abteilung (z. B. EB999) aufrufen. Er sieht dort kompakt, wann welcher Azubi in seiner Abteilung ist und wie viele dort pro Tag sitzen.</p>
