@@ -4,7 +4,13 @@ namespace Einsatzplanung.API.Controllers
 {
     public class FachausbilderController : ApiController
     {
-       [HttpGet]
-       [Route("")]
+       [HttpPost]
+       [Route("api/fachausbilder")]
+       public HttpResponseMessage PostFachausbilder([FromBody] Fachausbilder fachausbilder)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        
     }
 }
