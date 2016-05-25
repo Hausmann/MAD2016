@@ -10,12 +10,14 @@ namespace Einsatzplanung.WebClient.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Message = "Main passt sich nach Content an, mind. 200px";
+
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Hello DATEV";
 
             return View();
         }
@@ -26,5 +28,10 @@ namespace Einsatzplanung.WebClient.Controllers
 
             return View();
         }
+
+		public ActionResult AzubiListe()
+		{
+			return View();
+		}
     }
 }
