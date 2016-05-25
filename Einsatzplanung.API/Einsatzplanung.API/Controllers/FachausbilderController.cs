@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Einsatzplanung.API.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,7 +10,13 @@ namespace Einsatzplanung.API.Controllers
 {
     public class FachausbilderController : ApiController
     {
-       [HttpGet]
-       [Route("")]
+       [HttpPost]
+       [Route("api/fachausbilder")]
+       public HttpResponseMessage CreateNewFachausbilder([FromBody] Fachausbilder fachausbilder)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        
     }
 }
