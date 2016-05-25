@@ -12,7 +12,7 @@ namespace Einsatzplanung.API.Controllers
     {
        [HttpPost]
        [Route("api/fachausbilder")]
-       public HttpResponseMessage CreateNewFachausbilder([FromBody] Fachausbilder fachausbilder)
+       public HttpResponseMessage PostFachausbilder([FromBody] Fachausbilder fachausbilder)
         {
             return Request.CreateResponse(HttpStatusCode.OK);
         }

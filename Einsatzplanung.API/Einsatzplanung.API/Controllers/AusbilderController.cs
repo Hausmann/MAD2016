@@ -20,7 +20,7 @@ namespace Einsatzplanung.API.Controllers
     
         [HttpPost]
         [Route("api/ausbilder")]
-        public HttpResponseMessage CreateAusbilder([FromBody] Ausbilder ausbilder)
+        public HttpResponseMessage PostAusbilder([FromBody] Ausbilder ausbilder)
         {
 
             return Request.CreateResponse(HttpStatusCode.OK);
