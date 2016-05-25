@@ -19,7 +19,7 @@
                 <div class="menuButton"><div class="active"><a href="newEinsatzort.html">Einsatzort</a></div></div>
                 <div class="menuButton"><a href="newEinsatz.html">Einsatz</a></div>
                 <div class="menuButton"><a href="sample_einsatzortansicht.html">Einsatzortansicht</a></div>
-                <div class="menuButton"><a href="AusbilderGesamt_graphicview.html">Ausbilder</a></div>
+                <div class="menuButton"><a href="AusbilderGesamt_graphicview.php">Ausbilder</a></div>
             </nav>
         </header>
         <div id="shadow">
