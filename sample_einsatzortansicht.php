@@ -1,14 +1,14 @@
 <html>
     <head>
         <link rel="stylesheet" href="./css/sample_einsatzortansicht.css" />
-        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./css/style_flex.css" />
         <title>Einsatzortansicht</title>
     </head>
     <body>
         <header>
             <div id="logo"><a href="index.html"><img src="img/Datev_Logo.png"/></a></div>
             <div id="userID">
-                Angemeldet als: Mustermann, Max
+                <div id="infoText">Angemeldet als: </div>Mustermann, Max
             </div>
             <nav>
                 <div class="menuButtonFirst"><a href="index.html">Startseite</a></div>
@@ -16,6 +16,7 @@
                 <div class="menuButton"><a href="newEinsatzort.html">Einsatzort</a></div>
                 <div class="menuButton"><a href="newEinsatz.html">Einsatz</a></div>
                 <div class="menuButton"><div class="active"><a href="sample_einsatzortansicht.html">Einsatzortansicht</a></div></div>
+                <div class="menuButton"><a href="AusbilderGesamt_graphicview.php">Ausbilder</a></div>
             </nav>
         </header>
         <div id="shadow">
