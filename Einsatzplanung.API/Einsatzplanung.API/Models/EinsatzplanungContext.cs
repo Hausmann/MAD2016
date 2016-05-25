@@ -1,12 +1,11 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Einsatzplanung.API.Models
 {
     public class EinsatzplanungContext : DbContext
     {
-        public EinsatzplanungContext() : base(nameOrConnectionString: "einsatzplanungConStr")
-        {
-        }
+        public EinsatzplanungContext() : base(nameOrConnectionString: "einsatzplanungConStr") { }
 
         public DbSet<Azubi> Azubis { get; set; }
 
@@ -14,5 +13,9 @@ namespace Einsatzplanung.API.Models
 
         public DbSet<Fachausbilder> Fachausbilder { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 }
