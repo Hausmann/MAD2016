@@ -27,7 +27,49 @@
         <div id="shadow">
 		<div id ="main">
 			<p>Inhaltsbereich</p>
-            <div class="tableazubi">
+
+
+            <?php
+                $db_link = mysqli_connect ("192.168.1.143", "root", "", "einsatzplanungdb");
+
+                if (!$db_link)
+                {
+                    die ('Connect Error:' .mysqli_connect_errno());
+                }
+
+
+                $str_query = "SELECT vorname, nachname FROM azubis";
+
+                $result = mysqli_query($db_link, $str_query);
+
+                $startkw = 10;
+                $endkw = $startkw + 11;
+                $abteilung = "Berufsschule";
+
+                echo "<table>
+                        <tr>
+                            <th style='width:16vw'>KW</th>";
+                for ($startkw; $startkw <= $endkw; $startkw++)
+                {
+                    echo "<th style='width:7vw'>$startkw</th>";
+                }
+                echo "</tr>";
+
+                $row = mysqli_fetch_assoc($result);
+
+                while ($row)
+                {
+                    echo "<tr>";
+                    echo "<td>" . $row["vorname"] . $row["nachname"] . "</td>";
+                    echo "</tr>";
+                }
+
+
+                echo "</table>";
+
+            ?>
+
+
             <table>
                 <tr>
                     <th style="width:16vw">KW</th>
@@ -105,7 +147,6 @@
                     <td class="einsatz"> </td>
                 </tr>
             </table>
-            </div>
 		</div>
         <footer>
             Fußbereich
