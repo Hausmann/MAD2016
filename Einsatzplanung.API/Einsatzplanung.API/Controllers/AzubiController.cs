@@ -9,14 +9,6 @@ namespace Einsatzplanung.API.Controllers
 {
     public class AzubiController : ApiController
     {
-        /*
-        * GET /api/azubi/{azubiID}
-        * GET /api/azubis/{ausbilderID}
-        * GET /api/abteilung/{abteilungsID}/azubis
-        *
-        * POST /api/azubi
-        */
-
         [HttpGet]
         [Route("api/azubi/{azubiID}")]
         public Azubi GetAzubi([FromUri] int azubiID)
@@ -41,13 +33,6 @@ namespace Einsatzplanung.API.Controllers
                 List<Azubi> azubisZuAusbilder = query.ToList<Azubi>();
                 return azubisZuAusbilder;
             }
-        }
-
-        [HttpGet]
-        [Route("api/abteilung/{abteilungsID}/azubis")]
-        public List<Azubi> GetAbteilungsAzubis([FromUri] int abteilungsID)
-        {
-            return null;
         }
 
         [HttpPost]

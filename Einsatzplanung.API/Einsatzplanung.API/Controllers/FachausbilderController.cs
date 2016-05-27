@@ -18,7 +18,29 @@ namespace Einsatzplanung.API.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-
-        
+        [HttpPut]
+        [Route("api/fachausbilder/{id}")]
+        public void UpdateFachausbilder([FromUri] int id, [FromBody] Fachausbilder newfachausbilder)
+        {
+            using (var context = new EinsatzplanungContext())
+            {
+                foreach (var fa in context.Fachausbilder)
+                {
+                    if(fa.FachausbilderID == id)
+                    {
+                        if(newfachausbilder.abteilungID != 0)
+                            fa.abteilungID = newfachausbilder.abteilungID;
+                        if(newfachausbilder.Nachname != null)
+                            fa.Nachname = newfachausbilder.Nachname;
+                        if(newfachausbilder.Vorname != null)
+                            fa.Vorname = newfachausbilder.Vorname;
+                        if(fa.PersNr != 0)
+                            fa.PersNr = newfachausbilder.PersNr;
+                        context.SaveChangesAsync();
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
