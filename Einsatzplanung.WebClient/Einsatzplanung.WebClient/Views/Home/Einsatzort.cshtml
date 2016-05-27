@@ -5,7 +5,7 @@
 }
 
 <h1>Neuen Einsatzort erstellen</h1>
-<form action="#" method="post">
+<form>
 	<p>KOE: <input type="text" name="koe" /></p>
 	<p>
 		Beauftragter:
@@ -16,6 +16,31 @@
 	<p>Max Stellen: <input type="text" name="stellen" /></p>
 	<p>Beschreibung: </p>
 	<textarea id="text" name="beschreibung" cols="35" rows="4"></textarea>
-	<p><input type="submit" value="neuen Einsatzort erstellen" /></p>
+	<p><input type="submit" value="neuen Einsatzort erstellen" id="neuerEinsatzort" /></p>
 </form>
+
+<script>
+    $(document).ready(function () {
+        $("#neuerEinsatzort").click(function (e) {
+            e.preventDefault();
+
+            alert("button click");
+
+            //$.ajax({
+            //    type: "GET",
+            //    url: "http://localhost:13318/api/ausbilder/0",
+            //    success: function() {
+            //        alert("erfolgreich");
+            //    },
+            //    error: function() {
+            //        alert("error");
+            //    }
+            //});
+
+            $.get("http://localhost:13318/api/ausbilder/1", function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+        });
+    });
+</script>
 

@@ -11,15 +11,16 @@ namespace Einsatzplanung.API.Controllers
     {
         [HttpGet]
         [Route("api/ausbilder/{persNummer}")]
-        public int GetAusbilderID([FromUri] int persNummer)
+        public Ausbilder GetAusbilder([FromUri] int persNummer)
         {
             using (var context = new EinsatzplanungContext())
             {
                 var ausbilder = context.Ausbilder.Find(persNummer);
                 if (ausbilder != null)
-                    return ausbilder.AusbilderID;
+                    return ausbilder;
+                else
+                    return null;
             }
-            return 0;
         }
     
         [HttpPost]
@@ -30,10 +31,9 @@ namespace Einsatzplanung.API.Controllers
             {
                 context.Ausbilder.Add(ausbilder);
                 context.SaveChangesAsync();
-
             }
-            return Request.CreateResponse(HttpStatusCode.OK);
 
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }
