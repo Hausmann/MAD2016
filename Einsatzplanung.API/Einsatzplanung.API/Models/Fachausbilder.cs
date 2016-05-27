@@ -14,6 +14,8 @@ namespace Einsatzplanung.API.Models
         public string Nachname { get; set;}
 
         public int abteilungID { get; set;}
+
+        public int PersNr { get; set;}
     }
 
 }
