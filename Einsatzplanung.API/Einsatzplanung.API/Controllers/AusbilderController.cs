@@ -11,12 +11,15 @@ namespace Einsatzplanung.API.Controllers
     {
         [HttpGet]
         [Route("api/ausbilder/{persNummer}")]
-        public List<Ausbilder> GetAusbilderID([FromUri] int persNummer)
+        public int GetAusbilderID([FromUri] int persNummer)
         {
             using (var context = new EinsatzplanungContext())
             {
-                return context.Ausbilder.ToList();
+                var ausbilder = context.Ausbilder.Find(persNummer);
+                if (ausbilder != null)
+                    return ausbilder.AbteilungID;
             }
+                return 0;
         }
     
         [HttpPost]
