@@ -5,7 +5,7 @@
 }
 
 <h1>Neuen Einsatzort erstellen</h1>
-<form>
+<form action="#" method="post">
 	<p>KOE: <input type="text" name="koe" /></p>
 	<p>
 		Beauftragter:
@@ -24,22 +24,25 @@
         $("#neuerEinsatzort").click(function (e) {
             e.preventDefault();
 
-            alert("button click");
+            $.ajax({
+                type: "GET",
+                headers: { "Access-Control-Allow-Origin": "*" },
+                url: "http://localhost:13318/api/ausbilder/1"
+            })
 
-            //$.ajax({
-            //    type: "GET",
-            //    url: "http://localhost:13318/api/ausbilder/0",
-            //    success: function() {
-            //        alert("erfolgreich");
-            //    },
-            //    error: function() {
-            //        alert("error");
-            //    }
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+                console.log(errorThrown);
+            })
+
+            //$.get("http://localhost:13318/api/ausbilder/1", function (data) {
+            //    alert("erfolgreich");
+            //}).fail(function (xhr, status, error) {
+            //    alert("xhr: " + xhr.responseText + "; status: " + status + ";error: " + error);
+            //}).always(function () {
+            //    alert("Ende");
             //});
-
-            $.get("http://localhost:13318/api/ausbilder/1", function(data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            });
         });
     });
 </script>
