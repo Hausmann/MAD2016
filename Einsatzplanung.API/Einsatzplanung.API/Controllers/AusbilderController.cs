@@ -15,12 +15,13 @@ namespace Einsatzplanung.API.Controllers
         {
             using (var context = new EinsatzplanungContext())
             {
-                var ausbilder = context.Ausbilder.Find(persNummer);
-                if (ausbilder != null)
-                    return ausbilder;
-                else
-                    return null;
+                foreach (var ausbilder in context.Ausbilder)
+                {
+                    if (ausbilder.PersNr == persNummer)
+                        return ausbilder;
+                }
             }
+            return null;
         }
     
         [HttpPost]
