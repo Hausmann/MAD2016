@@ -135,7 +135,7 @@ nav ul a
 	border-left: 1px solid #999;
 }
 
-.menuButton a:hover 
+nav ul a:hover 
 {
     color: #333;
 }
