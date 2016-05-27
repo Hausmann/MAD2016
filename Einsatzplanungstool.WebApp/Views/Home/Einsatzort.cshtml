@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Neuen Einsatzort erstellen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Neuen Einsatzort erstellen</h1>
+<form action="#" method="post">
+	<p>KOE: <input type="text" name="koe" /></p>
+	<p>
+		Beauftragter:
+		<select name="beauftragter">
+			@*TODO*@
+		</select>
+	</p>
+	<p>Max Stellen: <input type="text" name="stellen" /></p>
+	<p>Beschreibung: </p>
+	<textarea id="text" name="beschreibung" cols="35" rows="4"></textarea>
+	<p><input type="submit" value="neuen Einsatzort erstellen" /></p>
+</form>
+

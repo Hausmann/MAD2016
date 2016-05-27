@@ -1,17 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace Einsatzplanungstool.WebApp.Controllers
+namespace Einsatzplanung.WebClient.Controllers
 {
 	public class HomeController : Controller
-	{
-		public ActionResult Index()
-		{
-			ViewBag.Title = "Home Page";
+    {
+        public ActionResult Index()
+        {
+            ViewBag.Message = "Main passt sich nach Content an, mind. 200px";
 
+            return View();
+        }
+
+		public ActionResult AzubiListe()
+		{
+			return View();
+		}
+
+		public ActionResult Einsatzort()
+		{
+			return View();
+		}
+
+		public ActionResult Einsatz()
+		{
+			return View();
+		}
+
+		public ActionResult Einsatzortansicht()
+		{
+			return View();
+		}
+
+		public ActionResult Ausbilder()
+		{
 			return View();
 		}
 	}

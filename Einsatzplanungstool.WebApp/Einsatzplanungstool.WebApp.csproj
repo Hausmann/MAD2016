@@ -121,8 +121,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="css\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -136,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Ausbilder.js" />
+    <Content Include="Scripts\AzubiListe.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -148,7 +151,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Home\Ausbilder.cshtml" />
+    <Content Include="Views\Home\AzubiListe.cshtml" />
+    <Content Include="Views\Home\Einsatz.cshtml" />
+    <Content Include="Views\Home\Einsatzort.cshtml" />
+    <Content Include="Views\Home\Einsatzortansicht.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
