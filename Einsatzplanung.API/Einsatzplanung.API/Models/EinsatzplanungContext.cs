@@ -17,6 +17,8 @@ namespace Einsatzplanung.API.Models
 
         public DbSet<Einsaetze> Einsatz { get; set;}
 
+        public DbSet<Einsaetze> Einsaetze { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

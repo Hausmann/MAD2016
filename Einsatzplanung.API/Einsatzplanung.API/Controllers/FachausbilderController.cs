@@ -13,13 +13,13 @@ namespace Einsatzplanung.API.Controllers
         {
             if (fachausbilder != null)
             {
-                using (var context = new EinsatzplanungContext())
-                {
-                    context.Fachausbilder.Add(fachausbilder);
-                    context.SaveChangesAsync();
-                }
-                return Request.CreateResponse(HttpStatusCode.OK);
+            using (var context = new EinsatzplanungContext())
+            {
+                context.Fachausbilder.Add(fachausbilder);
+                context.SaveChangesAsync();
             }
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
             return Request.CreateResponse(HttpStatusCode.NotFound);
         }
         [HttpPut]
@@ -48,6 +48,6 @@ namespace Einsatzplanung.API.Controllers
                     }
                 }
             }
-        }
     }
+}
 }

@@ -4,27 +4,24 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace Einsatzplanung.API.Controllers
 {
-    [EnableCors(origins: "http://localhost:13318", headers: "*", methods: "*")]
     public class AusbilderController : ApiController
     {
         [HttpGet]
         [Route("api/ausbilder/{persNummer}")]
-        public Ausbilder GetAusbilder([FromUri] int persNummer)
+        public int GetAusbilderID([FromUri] int persNummer)
         {
             if (persNummer != 0)
             {
-                using (var context = new EinsatzplanungContext())
-                {
-                    foreach (var ausbilder in context.Ausbilder)
-                    {
-                        if (ausbilder.PersNr == persNummer)
-                            return ausbilder;
-                    }
+            using (var context = new EinsatzplanungContext())
+            {
+                var ausbilder = context.Ausbilder.Find(persNummer);
+                if (ausbilder != null)
+                    return ausbilder.AusbilderID;
                 }
+            }
             }
             return null;
         }
@@ -35,13 +32,13 @@ namespace Einsatzplanung.API.Controllers
         {
             if (ausbilder != null)
             {
-                using (var context = new EinsatzplanungContext())
-                {
-                    context.Ausbilder.Add(ausbilder);
-                    context.SaveChangesAsync();
+            using (var context = new EinsatzplanungContext())
+            {
+                context.Ausbilder.Add(ausbilder);
+                context.SaveChangesAsync();
                 }
                 return Request.CreateResponse(HttpStatusCode.OK);
-            }
+        }
             return Request.CreateResponse(HttpStatusCode.NotFound);
         }
 
@@ -70,7 +67,7 @@ namespace Einsatzplanung.API.Controllers
                         }
                     }
                 }
-            }
         }
     }
+}
 }

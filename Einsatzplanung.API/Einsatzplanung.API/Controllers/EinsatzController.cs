@@ -10,33 +10,87 @@ namespace Einsatzplanung.API.Controllers
 {
     public class EinsatzController : ApiController
     {
+        /*
+        * GET api/azubi/{azubiID}/einsaetze
+        *
+        * POST api/einsatz/neu
+        *
+        * PUT api/einsatz/{einsatzID}/bearbeiten
+        *
+        * DELETE
+        */
+
         [HttpGet]
-        [Route("api/abteilung/{abteilungID}/azubis")]
-        public List<Azubi> GetAzubiEinsaetze([FromUri] int abteilungID)
+        [Route("api/azubi/{azubiID}/einsaetze")]
+        public List<Einsaetze> GetAzubiEinsaetze([FromUri] int azubiID)
         {
-            List<Azubi> listAzubis = new List<Azubi>();
             using (var context = new EinsatzplanungContext())
             {
-                foreach (var einsatz in context.Einsatz)
-                {
-                    if(einsatz.AbteilungID == abteilungID)
-                    {
-                        var azubi = context.Azubis.Find(einsatz.AzubiID);
-                        listAzubis.Add(azubi);
-                    }
-                }
-                return listAzubis;
+                var query = from a in context.Azubis
+                            join e in context.Einsaetze on a.AzubiID equals e.AzubiID
+                            join abt in context.Abteilung on e.AbteilungID equals abt.AbteilungID
+                            where azubiID == e.AzubiID
+                            select e;
+
+                List<Einsaetze> azubiEinsaetze = query.ToList<Einsaetze>();
+                return azubiEinsaetze; 
             }
         }
 
         [HttpPost]
-        [Route("api/einsatz")]
-        public HttpResponseMessage PostEinsatz([FromBody] Einsaetze einsatz)
+        [Route("api/einsatz/neu")]
+        public HttpResponseMessage PostAzubiEinsatz([FromBody] Einsaetze newEinsatz)
         {
             using (var context = new EinsatzplanungContext())
             {
-                context.Einsatz.Add(einsatz);
+                context.Einsaetze.Add(newEinsatz);
                 context.SaveChangesAsync();
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+         [HttpPut]
+         [Route("api/einsatz/{einsatzID}/bearbeiten")]
+        public HttpResponseMessage PutAzubiEinsatz([FromUri] int einsatzID, [FromBody] Einsaetze einsatz)
+        {
+            using (var context = new EinsatzplanungContext())
+            {
+                Einsaetze einsatzAusDB = context.Einsaetze.Find(einsatzID);
+
+                if (einsatzAusDB != null)
+                {
+                    if(einsatz.AbteilungID != 0)
+                    {
+                        einsatzAusDB.AbteilungID = einsatz.AbteilungID;
+                    }
+
+                    if (einsatz.AzubiID != 0)
+                    {
+                        einsatzAusDB.AzubiID = einsatz.AzubiID;
+                    }
+
+                    if (!string.IsNullOrEmpty(einsatz.VonDatum))
+                    {
+                        einsatzAusDB.VonDatum = einsatz.VonDatum;
+                    }
+                    if (!string.IsNullOrEmpty(einsatz.BisDatum))
+                    {
+                        einsatzAusDB.BisDatum = einsatz.BisDatum;
+                    }
+                    if (!string.IsNullOrEmpty(einsatz.Status))
+                    {
+                        einsatzAusDB.Status = einsatz.Status;
+                    }
+
+                    context.SaveChangesAsync();
+
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound);
+                }
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }

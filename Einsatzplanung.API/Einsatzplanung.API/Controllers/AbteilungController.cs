@@ -7,6 +7,14 @@ using System.Web.Http;
 
 namespace Einsatzplanung.API.Controllers
 {
+    /*
+	 * GET /api/abteilungen
+	 * GET /api/abteilung/{abteilungID}
+	 * 
+	 * POST /api/abteilung
+	 * PUT /api/abteilung/{abteilungID}
+	 */
+
     public class AbteilungController : ApiController
     {
         [HttpGet]
