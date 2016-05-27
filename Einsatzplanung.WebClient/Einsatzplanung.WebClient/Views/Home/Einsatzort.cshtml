@@ -5,7 +5,7 @@
 }
 
 <h1>Neuen Einsatzort erstellen</h1>
-<form action="#" method="post">
+<form>
 	<p>KOE: <input type="text" name="koe" /></p>
 	<p>
 		Beauftragter:
@@ -16,6 +16,24 @@
 	<p>Max Stellen: <input type="text" name="stellen" /></p>
 	<p>Beschreibung: </p>
 	<textarea id="text" name="beschreibung" cols="35" rows="4"></textarea>
-	<p><input type="submit" value="neuen Einsatzort erstellen" /></p>
+	<p><input type="submit" value="neuen Einsatzort erstellen" id="neuerEinsatzort" /></p>
 </form>
+
+<script>
+    $(document).ready(function () {
+        $("#neuerEinsatzort").click(function (e) {
+            e.preventDefault();
+
+            alert("Test 1");
+
+            $.ajax({
+                type: "GET",
+                url: "C:\Users\TG00022\Desktop\test.html",
+                success: function () {
+                    alert("erfolgreich");
+                }
+            });
+        });
+    });
+</script>
 
