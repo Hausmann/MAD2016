@@ -25,6 +25,7 @@ namespace Einsatzplanung.API.Models
         [Column("heimatabteilungID")]
         public int HeimatabteilungID { get; set; }
         
+        [Column("persNr")]
         public int PersNr { get; set;}
 
     }
