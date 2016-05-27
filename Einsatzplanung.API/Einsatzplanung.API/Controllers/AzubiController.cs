@@ -27,21 +27,29 @@ namespace Einsatzplanung.API.Controllers
         }
 
         [HttpGet]
-        [Route("api/azubis/{ausbilderID}")]
+        [Route("api/ausbilder/{ausbilderID}/azubis")]
         public List<Azubi> GetAzubis([FromUri] int ausbilderID)
         {
             using (var context = new EinsatzplanungContext())
             {
-                for(int i = 1; i <= context.Azubis.Count(); i++)
-                {
-                    int count = context.Azubis.Count();
-                    if (ausbilderID == context.Azubis.Find(i).AusbilderID)
-                    {
-                        context.Azubis.Add(context.Azubis.Find(i));
-                    }
-                }
-                
-                return context.Azubis.ToList();
+                //List<Azubi> AzubiList;
+                //for (int i = 1; i <= context.Azubis.Count(); i++)
+                //{
+                //    int count = context.Azubis.Count();
+                //    if (ausbilderID == context.Azubis.Find(i).AusbilderID)
+                //    {
+                //        AzubiList.Add();
+                //    }
+                //}
+
+                //return context.Azubis.ToList();
+
+                var query = from a in context.Ausbilder
+                            join b in context.Azubis on a.AusbilderID equals b.AusbilderID
+                            select b;
+
+                List<Azubi> azubisZuAusbilder = query.ToList<Azubi>();
+                return azubisZuAusbilder;
             }
         }
 
