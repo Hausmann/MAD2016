@@ -17,7 +17,7 @@ namespace Einsatzplanung.API.Controllers
             {
                 var ausbilder = context.Ausbilder.Find(persNummer);
                 if (ausbilder != null)
-                    return ausbilder.AbteilungID;
+                    return ausbilder.AusbilderID;
             }
                 return 0;
         }

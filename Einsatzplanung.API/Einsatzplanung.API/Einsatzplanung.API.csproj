@@ -102,12 +102,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AbteilungController.cs" />
     <Compile Include="Controllers\AusbilderController.cs" />
     <Compile Include="Controllers\AzubiController.cs" />
     <Compile Include="Controllers\FachausbilderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Abteilung.cs" />
     <Compile Include="Models\Ausbilder.cs" />
     <Compile Include="Models\Azubi.cs" />
     <Compile Include="Models\EinsatzplanungContext.cs" />
