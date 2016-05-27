@@ -11,7 +11,7 @@ namespace Einsatzplanung.API.Models
     public class Ausbilder
     {
         [Key]
-        [Column ("AusbilderID")]
+        [Column ("ausbilderID")]
         public int AusbilderID { get; set;}
 
         [Column ("vorname")]
