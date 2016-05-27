@@ -35,6 +35,19 @@ namespace Einsatzplanung.API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/abteilung/{abteilungsID}/azubis")]
+        public List<Azubi> GetAbteilungsAzubis([FromUri] int abteilungsID)
+        {
+            List<Azubi> listAzubisMitEinsatzInAbteilung = new List<Azubi>();
+            using (var context = new EinsatzplanungContext())
+            {
+                
+            }
+            return null;
+        }
+
+
         [HttpPost]
         [Route("api/azubi")]
         public HttpResponseMessage PostAzubi([FromBody] Azubi newAzubi)

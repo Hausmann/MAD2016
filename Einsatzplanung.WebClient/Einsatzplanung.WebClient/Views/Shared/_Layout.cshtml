@@ -1,42 +1,41 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@using Einsatzplanung.WebClient.Extensions
+
+<!DOCTYPE html>
+<html lang="de">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - Einsatzplanungstool</title>
+	@Styles.Render("~/css/style.css")
+	@Scripts.Render("~/Scripts/jquery.min.js")
+	@Scripts.Render("~/Scripts/AzubiListe.js")
+		@Scripts.Render("~/Scripts/Ausbilder.js")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+	<header>
+		<div id="logo"><img src="~/img/Datev_Logo.png" /></div>
+		<div id="userID">
+			<div id="infoText">Angemeldet als: </div>Mustermann, Max
+		</div>
+		<nav>
+			<ul id="nav-links">
+					@Html.ActionMenuItem("Startseite", "Index", "Home")
+					@Html.ActionMenuItem("Azubi-Liste", "AzubiListe", "Home")
+					@Html.ActionMenuItem("Einsatzort", "Einsatzort", "Home")
+					@Html.ActionMenuItem("Einsatz", "Einsatz", "Home")
+					@Html.ActionMenuItem("Einsatzortansicht", "Einsatzortansicht", "Home")
+					@Html.ActionMenuItem("Ausbilder", "Ausbilder", "Home")
+			</ul>
+		</nav>
+	</header>
+	<div id="shadow">
+		<div id="main">
+			@RenderBody()
+		</div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+		<footer>
+			Footer
+		</footer>
+	</div>
 </body>
 </html>

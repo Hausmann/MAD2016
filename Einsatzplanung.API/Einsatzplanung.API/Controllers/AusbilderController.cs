@@ -8,7 +8,7 @@ using System.Web.Http.Cors;
 
 namespace Einsatzplanung.API.Controllers
 {
-    [EnableCors(origins: "http://localhost:13318", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AusbilderController : ApiController
     {
         [HttpGet]
@@ -23,6 +23,8 @@ namespace Einsatzplanung.API.Controllers
                         return ausbilder;
                 }
             }
+            return 0;
+        }
             return null;
         }
     
@@ -34,6 +36,7 @@ namespace Einsatzplanung.API.Controllers
             {
                 context.Ausbilder.Add(ausbilder);
                 context.SaveChangesAsync();
+
             }
 
             return Request.CreateResponse(HttpStatusCode.OK);
