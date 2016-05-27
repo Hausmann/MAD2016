@@ -1,7 +1,7 @@
-﻿using System.Web.Http;
-using System.Net.Http;
-using Einsatzplanung.API.Models;
+﻿using Einsatzplanung.API.Models;
 using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace Einsatzplanung.API.Controllers
 {
@@ -11,6 +11,11 @@ namespace Einsatzplanung.API.Controllers
        [Route("api/fachausbilder")]
        public HttpResponseMessage PostFachausbilder([FromBody] Fachausbilder fachausbilder)
         {
+            using (var context = new EinsatzplanungContext())
+            {
+                context.Fachausbilder.Add(fachausbilder);
+                context.SaveChangesAsync();
+            }
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 

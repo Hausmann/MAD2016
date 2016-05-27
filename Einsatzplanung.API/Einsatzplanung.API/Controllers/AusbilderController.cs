@@ -1,7 +1,9 @@
-﻿using System.Web.Http;
-using System.Net.Http;
-using Einsatzplanung.API.Models;
+﻿using Einsatzplanung.API.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace Einsatzplanung.API.Controllers
 {
@@ -11,7 +13,12 @@ namespace Einsatzplanung.API.Controllers
         [Route("api/ausbilder/{persNummer}")]
         public int GetAusbilderID([FromUri] int persNummer)
         {
-
+            using (var context = new EinsatzplanungContext())
+            {
+                var ausbilder = context.Ausbilder.Find(persNummer);
+                if (ausbilder != null)
+                    return ausbilder.AusbilderID;
+            }
             return 0;
         }
     
@@ -19,8 +26,14 @@ namespace Einsatzplanung.API.Controllers
         [Route("api/ausbilder")]
         public HttpResponseMessage PostAusbilder([FromBody] Ausbilder ausbilder)
         {
+            using (var context = new EinsatzplanungContext())
+            {
+                context.Ausbilder.Add(ausbilder);
+                context.SaveChangesAsync();
 
+            }
             return Request.CreateResponse(HttpStatusCode.OK);
+
         }
     }
 }
