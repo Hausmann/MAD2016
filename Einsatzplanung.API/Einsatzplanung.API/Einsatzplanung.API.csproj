@@ -119,6 +119,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Abteilung.cs" />
+    <Compile Include="Models\Abteilungseinsaetze.cs" />
     <Compile Include="Models\Ausbilder.cs" />
     <Compile Include="Models\Azubi.cs" />
     <Compile Include="Models\Einsaetze.cs" />
