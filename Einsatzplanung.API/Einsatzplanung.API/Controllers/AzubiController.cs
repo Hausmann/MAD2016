@@ -32,20 +32,9 @@ namespace Einsatzplanung.API.Controllers
         {
             using (var context = new EinsatzplanungContext())
             {
-                //List<Azubi> AzubiList;
-                //for (int i = 1; i <= context.Azubis.Count(); i++)
-                //{
-                //    int count = context.Azubis.Count();
-                //    if (ausbilderID == context.Azubis.Find(i).AusbilderID)
-                //    {
-                //        AzubiList.Add();
-                //    }
-                //}
-
-                //return context.Azubis.ToList();
-
                 var query = from a in context.Ausbilder
                             join b in context.Azubis on a.AusbilderID equals b.AusbilderID
+                            where ausbilderID == b.AusbilderID
                             select b;
 
                 List<Azubi> azubisZuAusbilder = query.ToList<Azubi>();
