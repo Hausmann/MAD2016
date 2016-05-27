@@ -1,0 +1,184 @@
+﻿
+@{
+    ViewBag.Title = "Neuen Einsatzort erstellen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Einsatzortansicht</h1>
+<content>
+	<!-- Alles außerhalb des Contents ist nicht mein Bier, sondern das des Layouts -->
+	<table>
+		<tr>
+			<th>Woche</th>
+			<th>Anzahl</th>
+			<th>Marco Fuchs</th>
+			<th>Max Mustermann</th>
+			<th>Anton Hammerpfichel</th>
+		</tr>
+		<tr class="Wochenstart">
+			<td rowspan="5" class="ungerade_KW">01.01.2016 - 05.01.2016 (KW 1)</td>
+			<td class="frei">1</td>
+			<td class="Anwesend">Mo</td>
+			<td class="Abwesend">Mo</td>
+			<td class="Abwesend">Mo</td>
+		</tr>
+		<tr>
+			<td class="frei">1</td>
+			<td class="Anwesend">Di</td>
+			<td class="Abwesend">Di</td>
+			<td class="Abwesend">Di</td>
+		</tr>
+		<tr>
+			<td class="frei">1</td>
+			<td class="Anwesend">Mi</td>
+			<td class="Abwesend">Mi</td>
+			<td class="Abwesend">Mi</td>
+		</tr>
+		<tr>
+			<td class="frei">1</td>
+			<td class="Anwesend">Do</td>
+			<td class="Abwesend">Do</td>
+			<td class="Abwesend">Do</td>
+		</tr>
+		<tr>
+			<td class="frei">1</td>
+			<td class="Anwesend">Fr</td>
+			<td class="Abwesend">Fr</td>
+			<td class="Abwesend">Fr</td>
+		</tr>
+		<tr class="Wochenstart Feiertag">
+			<td rowspan="5" class="gerade_KW">08.01.2016 - 12.01.2016 (KW 2)</td>
+			<td class="einer_frei">0</td>
+			<td class="Anwesend">Mo</td>
+			<td class="Anwesend">Mo</td>
+			<td class="Abwesend">Mo</td>
+		</tr>
+		<tr class="Feiertag">
+			<td class="einer_frei">0</td>
+			<td class="Anwesend">Di</td>
+			<td class="Anwesend">Di</td>
+			<td class="Abwesend">Di</td>
+		</tr>
+		<tr>
+			<td class="einer_frei">2</td>
+			<td class="Anwesend">Mi</td>
+			<td class="Anwesend">Mi</td>
+			<td class="Abwesend">Mi</td>
+		</tr>
+		<tr>
+			<td class="frei">1</td>
+			<td class="Anwesend">Do</td>
+			<td class="Schulung">Do</td>
+			<td class="Abwesend">Do</td>
+		</tr>
+		<tr>
+			<td class="frei">1</td>
+			<td class="Anwesend">Fr</td>
+			<td class="Schulung">Fr</td>
+			<td class="Abwesend">Fr</td>
+		</tr>
+		<tr class="Wochenstart">
+			<td rowspan="5" class="ungerade_KW">15.01.2016 - 19.01.2016 (KW 3)</td>
+			<td class="einer_frei">2</td>
+			<td class="Anwesend">Mo</td>
+			<td class="Anwesend">Mo</td>
+			<td class="Abwesend">Mo</td>
+		</tr>
+		<tr>
+			<td class="einer_frei">2</td>
+			<td class="Anwesend">Di</td>
+			<td class="Anwesend">Di</td>
+			<td class="Abwesend">Di</td>
+		</tr>
+		<tr>
+			<td class="einer_frei">2</td>
+			<td class="Anwesend">Mi</td>
+			<td class="Anwesend">Mi</td>
+			<td class="Abwesend">Mi</td>
+		</tr>
+		<tr>
+			<td class="voll">3</td>
+			<td class="Anwesend">Do</td>
+			<td class="Anwesend">Do</td>
+			<td class="Anwesend">Do</td>
+		</tr>
+		<tr>
+			<td class="voll">3</td>
+			<td class="Anwesend">Fr</td>
+			<td class="Anwesend">Fr</td>
+			<td class="Anwesend">Fr</td>
+		</tr>
+		<tr class="Wochenstart">
+			<td rowspan="5" class="gerade_KW">22.01.2016 - 26.01.2016 (KW 4)</td>
+			<td class="einer_frei">2</td>
+			<td class="Abwesend">Mo</td>
+			<td class="Anwesend">Mo</td>
+			<td class="Anwesend">Mo</td>
+		</tr>
+		<tr>
+			<td class="einer_frei">2</td>
+			<td class="Abwesend">Di</td>
+			<td class="Anwesend">Di</td>
+			<td class="Anwesend">Di</td>
+		</tr>
+		<tr>
+			<td class="einer_frei">2</td>
+			<td class="Abwesend">Mi</td>
+			<td class="Anwesend">Mi</td>
+			<td class="Anwesend">Mi</td>
+		</tr>
+		<tr>
+			<td class="einer_frei">2</td>
+			<td class="Abwesend">Do</td>
+			<td class="Anwesend">Do</td>
+			<td class="Anwesend">Do</td>
+		</tr>
+		<tr>
+			<td class="einer_frei">2</td>
+			<td class="Abwesend">Fr</td>
+			<td class="Anwesend">Fr</td>
+			<td class="Anwesend">Fr</td>
+		</tr>
+		<tr class="Wochenstart">
+			<td rowspan="5" class="ungerade_KW">29.01.2016 - 02.02.2016 (KW 5)</td>
+			<td class="einer_frei">2</td>
+			<td class="Abwesend">Mo</td>
+			<td class="Anwesend">Mo</td>
+			<td class="Anwesend">Mo</td>
+		</tr>
+		<tr>
+			<td class="einer_frei">2</td>
+			<td class="Abwesend">Di</td>
+			<td class="Anwesend">Di</td>
+			<td class="Anwesend">Di</td>
+		</tr>
+		<tr>
+			<td class="einer_frei">2</td>
+			<td class="Abwesend">Mi</td>
+			<td class="Anwesend">Mi</td>
+			<td class="Anwesend">Mi</td>
+		</tr>
+		<tr>
+			<td class="frei">1</td>
+			<td class="Abwesend">Do</td>
+			<td class="Abwesend">Do</td>
+			<td class="Anwesend">Do</td>
+		</tr>
+		<tr>
+			<td class="frei">1</td>
+			<td class="Abwesend">Fr</td>
+			<td class="Abwesend">Fr</td>
+			<td class="Anwesend">Fr</td>
+		</tr>
+	</table>
+	<h2>Funktionsweise:</h2>
+	<p> Diese Ansicht kann ein Fachausbilder einer gewissen Abteilung (z. B. EB999) aufrufen. Er sieht dort kompakt, wann welcher Azubi in seiner Abteilung ist und wie viele dort pro Tag sitzen.</p>
+	<h2>Farblegende: </h2>
+	<p><span class="Feiertag">Grau</span> hinterlegt: Feiertag / Arbeitsfrei</p>
+	<p><span class="Abwesend">Weiß</span> hinterlegt: Azubi ist nicht in Abt. eingesetzt</p>
+	<p><span class="Anwesend">Grün</span> hinterlegt: Azubi ist in Abteilung anwesend</p>
+	<p><span class="Schulung">Lila</span> hinterlegt: Azubi ist auf einer Schulung / Studium / BS (also in Abt. eingesetzt, aber nicht anwesend)</p>
+	<p><span class="einer_frei">Orange</span> hinterlegt: Nur noch ein Platz frei in der Abteilung</p>
+	<p><span class="voll">Rot</span> hinterlegt: Kein Platz mehr frei</p>
+</content>
+

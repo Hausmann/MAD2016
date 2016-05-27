@@ -1,5 +1,6 @@
 ﻿using Einsatzplanung.API.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -20,14 +21,26 @@ namespace Einsatzplanung.API.Controllers
         [Route("api/azubi/{azubiID}")]
         public Azubi GetAzubi([FromUri] int azubiID)
         {
-            return null;
+            using (var context = new EinsatzplanungContext())
+            {
+                return context.Azubis.FirstOrDefault((azubi) => azubi.AzubiID == azubiID);
+            }
         }
 
         [HttpGet]
-        [Route("api/azubis/{ausbilderID}")]
+        [Route("api/ausbilder/{ausbilderID}/azubis")]
         public List<Azubi> GetAzubis([FromUri] int ausbilderID)
         {
-            return null;
+            using (var context = new EinsatzplanungContext())
+            {
+                var query = from a in context.Ausbilder
+                            join b in context.Azubis on a.AusbilderID equals b.AusbilderID
+                            where ausbilderID == b.AusbilderID
+                            select b;
+
+                List<Azubi> azubisZuAusbilder = query.ToList<Azubi>();
+                return azubisZuAusbilder;
+            }
         }
 
         [HttpGet]

@@ -19,7 +19,7 @@ namespace Einsatzplanung.API.Controllers
                 if (ausbilder != null)
                     return ausbilder.AusbilderID;
             }
-                return 0;
+            return 0;
         }
     
         [HttpPost]
@@ -30,7 +30,7 @@ namespace Einsatzplanung.API.Controllers
             {
                 context.Ausbilder.Add(ausbilder);
                 context.SaveChangesAsync();
-                
+
             }
             return Request.CreateResponse(HttpStatusCode.OK);
 
