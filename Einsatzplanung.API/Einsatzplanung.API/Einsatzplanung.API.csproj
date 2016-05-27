@@ -105,6 +105,7 @@
     <Compile Include="Controllers\AbteilungController.cs" />
     <Compile Include="Controllers\AusbilderController.cs" />
     <Compile Include="Controllers\AzubiController.cs" />
+    <Compile Include="Controllers\EinsatzController.cs" />
     <Compile Include="Controllers\FachausbilderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
