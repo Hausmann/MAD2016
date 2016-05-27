@@ -15,30 +15,29 @@ namespace Einsatzplanung.API.Controllers
         {
             if (persNummer != 0)
             {
-            using (var context = new EinsatzplanungContext())
-            {
-                var ausbilder = context.Ausbilder.Find(persNummer);
-                if (ausbilder != null)
-                    return ausbilder.AusbilderID;
+                using (var context = new EinsatzplanungContext())
+                {
+                    var ausbilder = context.Ausbilder.Find(persNummer);
+                    if (ausbilder != null)
+                        return ausbilder.AusbilderID;
                 }
             }
-            }
-            return null;
+            return 0;
         }
-    
+
         [HttpPost]
         [Route("api/ausbilder")]
         public HttpResponseMessage PostAusbilder([FromBody] Ausbilder ausbilder)
         {
             if (ausbilder != null)
             {
-            using (var context = new EinsatzplanungContext())
-            {
-                context.Ausbilder.Add(ausbilder);
-                context.SaveChangesAsync();
+                using (var context = new EinsatzplanungContext())
+                {
+                    context.Ausbilder.Add(ausbilder);
+                    context.SaveChangesAsync();
                 }
                 return Request.CreateResponse(HttpStatusCode.OK);
-        }
+            }
             return Request.CreateResponse(HttpStatusCode.NotFound);
         }
 
@@ -67,7 +66,7 @@ namespace Einsatzplanung.API.Controllers
                         }
                     }
                 }
+            }
         }
     }
-}
 }
