@@ -7,7 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>@ViewBag.Title - Einsatzplanungstool</title>
 		@Styles.Render("~/css/style.css")
-		@Scripts.Render("~/Scripts/jquery.min.js")
+        @Scripts.Render("~/Scripts/jquery.min.js")
+		@Scripts.Render("~/Scripts/Ausbilder.js")
 	</head>
 	<body>
 		<header>
@@ -17,12 +18,12 @@
 			</div>
 			<nav>
 				<ul id="nav-links">
-					<li>@Html.ActionMenuItem("Startseite", "Index", "Home")</li>
-					<li>@Html.ActionMenuItem("Azubi-Liste", "AzubiListe", "Home")</li>
-					<li>@Html.ActionMenuItem("Einsatzort", "Einsatzort", "Home")</li>
-					<li>@Html.ActionMenuItem("Einsatz", "Einsatz", "Home")</li>
-					<li>@Html.ActionMenuItem("Einsatzortansicht", "Einsatzortansicht", "Home")</li>
-					<li>@Html.ActionMenuItem("Ausbilder", "Ausbilder", "Home")</li>
+					@Html.ActionMenuItem("Startseite", "Index", "Home")
+					@Html.ActionMenuItem("Azubi-Liste", "AzubiListe", "Home")
+					@Html.ActionMenuItem("Einsatzort", "Einsatzort", "Home")
+					@Html.ActionMenuItem("Einsatz", "Einsatz", "Home")
+					@Html.ActionMenuItem("Einsatzortansicht", "Einsatzortansicht", "Home")
+					@Html.ActionMenuItem("Ausbilder", "Ausbilder", "Home")
 				</ul>
 			</nav>
 		</header>
