@@ -12,7 +12,7 @@ namespace Einsatzplanung.API.Models
     {
         [Key]
         [Column("einsatzID")]
-        public int EinsatzID { get; set; }
+        public int einsatzID { get; set; }
 
         [Column("abteilungID")]
         public int AbteilungID { get; set; }
