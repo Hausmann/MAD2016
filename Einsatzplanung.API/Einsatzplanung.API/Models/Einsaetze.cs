@@ -12,21 +12,21 @@ namespace Einsatzplanung.API.Models
     {
         [Key]
         [Column("einsatzID")]
-        public int einsatzID { get; set; }
+        public int EinsatzID { get; set; }
 
         [Column("abteilungID")]
-        public int abteilungID { get; set; }
+        public int AbteilungID { get; set; }
 
         [Column("azubiID")]
-        public int azubiID { get; set; }
+        public int AzubiID { get; set; }
 
         [Column("vonDatum")]
-        public string vonDatum { get; set; }
+        public string VonDatum { get; set; }
 
         [Column("bisDatum")]
-        public string bisDatum { get; set; }
+        public string BisDatum { get; set; }
 
         [Column("status")]
-        public string status { get; set; }
+        public string Status { get; set; }
     }
 }

@@ -9,15 +9,15 @@ using System.Web.Http;
 
 namespace Einsatzplanung.API.Controllers
 {
-    public class EinsaetzeController : ApiController
+    public class EinsatzController : ApiController
     {
       [HttpPost]
       [Route("api/einsatz")]
       public HttpResponseMessage PostEinsatz([FromBody] Einsaetze einsatz)
       {
-            if (einsatz != null)
+                foreach (var einsatz in context.Einsatz)
             {
-                using (var context = new EinsatzplanungContext())
+                    if(einsatz.AbteilungID == abteilungID)
                 {
                     context.Einsatz.Add(einsatz);
                     context.SaveChangesAsync();
@@ -26,6 +26,6 @@ namespace Einsatzplanung.API.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             return Request.CreateResponse(HttpStatusCode.NotFound);
-        }
+       }
     }
 }
