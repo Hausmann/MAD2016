@@ -4,9 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Einsatzplanung.API.Controllers
 {
+    [EnableCors(origins: "http://localhost:13318", headers: "*", methods: "*")]
     public class AusbilderController : ApiController
     {
         [HttpGet]
