@@ -34,5 +34,18 @@ namespace Einsatzplanung.API.Controllers
                 return listAzubis;
             }
         }
+
+        [HttpPost]
+        [Route("api/einsatz")]
+        public HttpResponseMessage PostEinsatz([FromBody] Einsaetze einsatz)
+        {
+            using (var context = new EinsatzplanungContext())
+            {
+                context.Einsatz.Add(einsatz);
+                context.SaveChangesAsync();
+            }
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
     }
 }
