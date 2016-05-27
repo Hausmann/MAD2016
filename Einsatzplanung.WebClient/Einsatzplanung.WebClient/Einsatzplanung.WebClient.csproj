@@ -166,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -178,7 +179,6 @@
     <Content Include="Views\Home\Einsatz.cshtml" />
     <Content Include="Views\Home\Einsatzortansicht.cshtml" />
     <Content Include="Views\Home\Ausbilder.cshtml" />
-    <Content Include="Views\Home\Azubi_hinzufuegen.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

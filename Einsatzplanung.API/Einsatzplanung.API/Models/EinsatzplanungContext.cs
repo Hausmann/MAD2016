@@ -7,13 +7,13 @@ namespace Einsatzplanung.API.Models
     {
         public EinsatzplanungContext() : base(nameOrConnectionString: "einsatzplanungConStr") { }
 
-        public DbSet<Azubi> Azubis { get; set; }
+        public DbSet<Azubi> Azubis { get; set;}
 
-        public DbSet<Ausbilder> Ausbilder { get; set; }
+        public DbSet<Ausbilder> Ausbilder { get; set;}
 
-        public DbSet<Fachausbilder> Fachausbilder { get; set; }
+        public DbSet<Fachausbilder> Fachausbilder { get; set;}
 
-        public DbSet<Abteilung> Abteilung { get; set; }
+        public DbSet<Abteilung> Abteilung { get; set;}
 
         public DbSet<Einsaetze> Einsatz { get; set; }
 

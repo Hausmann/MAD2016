@@ -7,26 +7,26 @@ using System.Web;
 
 namespace Einsatzplanung.API.Models
 {
-    [Table("einsaetze")]
+    [Table("einsatze")]
     public class Einsaetze
     {
         [Key]
         [Column("einsatzID")]
-        public int EinsatzID { get; set; }
+        public int einsatzId { get; set; }
 
         [Column("abteilungID")]
-        public int AbteilungID { get; set; }
+        public int abteilungID { get; set; }
 
         [Column("azubiID")]
-        public int AzubiID { get; set; }
+        public int azubiID { get; set; }
 
         [Column("vonDatum")]
-        public string VonDatum { get; set; }
+        public string vonDatum { get; set; }
 
         [Column("bisDatum")]
-        public string BisDatum { get; set; }
+        public string bisDatum { get; set; }
 
         [Column("status")]
-        public string Status { get; set; }
+        public string status { get; set; }
     }
 }

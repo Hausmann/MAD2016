@@ -16,34 +16,6 @@
 	<p>Max Stellen: <input type="text" name="stellen" /></p>
 	<p>Beschreibung: </p>
 	<textarea id="text" name="beschreibung" cols="35" rows="4"></textarea>
-	<p><input type="submit" value="neuen Einsatzort erstellen" id="neuerEinsatzort" /></p>
+	<p><input type="submit" value="neuen Einsatzort erstellen" /></p>
 </form>
-
-<script>
-    $(document).ready(function () {
-        $("#neuerEinsatzort").click(function (e) {
-            e.preventDefault();
-
-            $.ajax({
-                type: "GET",
-                headers: { "Access-Control-Allow-Origin": "*" },
-                url: "http://localhost:13318/api/ausbilder/1"
-            })
-
-            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log(XMLHttpRequest);
-                console.log(textStatus);
-                console.log(errorThrown);
-            })
-
-            //$.get("http://localhost:13318/api/ausbilder/1", function (data) {
-            //    alert("erfolgreich");
-            //}).fail(function (xhr, status, error) {
-            //    alert("xhr: " + xhr.responseText + "; status: " + status + ";error: " + error);
-            //}).always(function () {
-            //    alert("Ende");
-            //});
-        });
-    });
-</script>
 
