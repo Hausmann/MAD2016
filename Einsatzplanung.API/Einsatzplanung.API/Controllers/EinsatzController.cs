@@ -20,13 +20,18 @@ namespace Einsatzplanung.API.Controllers
         [Route("api/abteilung/{abteilungID}/azubis")]
         public List<Azubi> GetAzubiEinsaetze([FromUri] int abteilungID)
         {
+            List<Azubi> listAzubis = new List<Azubi>();
             using (var context = new EinsatzplanungContext())
             {
-                //var query = from a in context.Abteilung
-                //            join b in context.Azubis on a.AbteilungID equals b.
-                //            where ausbilderID == b.AusbilderID
-                //            select b;
-                return null;
+                foreach (var einsatz in context.Einsatz)
+                {
+                    if(einsatz.AbteilungID == abteilungID)
+                    {
+                        var azubi = context.Azubis.Find(einsatz.AzubiID);
+                        listAzubis.Add(azubi);
+                    }
+                }
+                return listAzubis;
             }
         }
     }
