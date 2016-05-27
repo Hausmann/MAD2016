@@ -13,6 +13,8 @@ namespace Einsatzplanung.API.Models
 
         public DbSet<Fachausbilder> Fachausbilder { get; set; }
 
+        public DbSet<Abteilung> Abteilung { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
