@@ -8,7 +8,7 @@ using System.Web.Http.Cors;
 
 namespace Einsatzplanung.API.Controllers
 {
-    [EnableCors(origins: "http://localhost:13318", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AusbilderController : ApiController
     {
         [HttpGet]
