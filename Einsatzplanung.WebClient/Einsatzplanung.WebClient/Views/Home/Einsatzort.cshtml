@@ -24,14 +24,21 @@
         $("#neuerEinsatzort").click(function (e) {
             e.preventDefault();
 
-            alert("Test 1");
+            alert("button click");
 
-            $.ajax({
-                type: "GET",
-                url: "C:\Users\TG00022\Desktop\test.html",
-                success: function () {
-                    alert("erfolgreich");
-                }
+            //$.ajax({
+            //    type: "GET",
+            //    url: "http://localhost:13318/api/ausbilder/0",
+            //    success: function() {
+            //        alert("erfolgreich");
+            //    },
+            //    error: function() {
+            //        alert("error");
+            //    }
+            //});
+
+            $.get("http://localhost:13318/api/ausbilder/1", function(data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
             });
         });
     });
