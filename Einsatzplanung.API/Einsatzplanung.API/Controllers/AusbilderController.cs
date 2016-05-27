@@ -49,10 +49,14 @@ namespace Einsatzplanung.API.Controllers
                 {
                     if(ausbilder.AusbilderID == ausbilderid)
                     {
-                        ausbilder.AbteilungID = newausbilder.AbteilungID;
-                        ausbilder.Nachname = newausbilder.Nachname;
-                        ausbilder.Vorname = newausbilder.Vorname;
-                        ausbilder.PersNr = newausbilder.PersNr;
+                        if(newausbilder.AbteilungID != 0)
+                            ausbilder.AbteilungID = newausbilder.AbteilungID;
+                        if(newausbilder.Nachname != null)
+                            ausbilder.Nachname = newausbilder.Nachname;
+                        if(newausbilder.Vorname != null)
+                            ausbilder.Vorname = newausbilder.Vorname;
+                        if(newausbilder.PersNr != 0)
+                            ausbilder.PersNr = newausbilder.PersNr;
                         context.SaveChangesAsync();
                         break;
                     }

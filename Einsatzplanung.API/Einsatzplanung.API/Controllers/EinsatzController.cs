@@ -10,12 +10,6 @@ namespace Einsatzplanung.API.Controllers
 {
     public class EinsatzController : ApiController
     {
-        /*
-        * GET api/azubi/{azubiID}/einsaetze
-        *
-        *
-        */
-
         [HttpGet]
         [Route("api/abteilung/{abteilungID}/azubis")]
         public List<Azubi> GetAzubiEinsaetze([FromUri] int abteilungID)
