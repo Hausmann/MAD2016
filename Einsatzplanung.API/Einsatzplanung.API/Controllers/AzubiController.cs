@@ -20,6 +20,12 @@ namespace Einsatzplanung.API.Controllers
         [Route("api/azubi/{azubiID}")]
         public Azubi GetAzubi([FromUri] int azubiID)
         {
+            using (var context = new EinsatzplanungContext())
+            {
+                var azubi = context.Azubis.Find(azubiID);
+                if (azubi != null)
+                    return azubi;
+            }
             return null;
         }
 
@@ -27,14 +33,27 @@ namespace Einsatzplanung.API.Controllers
         [Route("api/azubis/{ausbilderID}")]
         public List<Azubi> GetAzubis([FromUri] int ausbilderID)
         {
-            return null;
+            List<Azubi> listAzubisWithAusbilderID = new List<Azubi>();
+            using (var context = new EinsatzplanungContext)
+            {
+                foreach (var azubi in context.Azubis)
+                {
+                    if (azubi.AusbilderID == ausbilderID)
+                        listAzubisWithAusbilderID.Add(azubi);
+                }
+                return listAzubisWithAusbilderID;
+            }
         }
 
         [HttpGet]
         [Route("api/abteilung/{abteilungsID}/azubis")]
         public List<Azubi> GetAbteilungsAzubis([FromUri] int abteilungsID)
         {
-            return null;
+            List<Azubi> listAzubisMitEinsatzInAbteilung = new List<Azubi>();
+            using (var context = new EinsatzplanungContext)
+            {
+                return null;
+            }
         }
 
         [HttpPost]
