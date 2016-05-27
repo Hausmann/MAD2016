@@ -149,6 +149,9 @@
     <Content Include="img\Datev.png" />
     <Content Include="img\Datev_Logo.png" />
     <Content Include="img\favicon.png" />
+    <Content Include="Scripts\AzubiListe.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="test.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
