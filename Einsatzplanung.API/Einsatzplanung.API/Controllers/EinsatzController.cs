@@ -50,8 +50,8 @@ namespace Einsatzplanung.API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        [HttpPut]
-        [Route("api/einsatz/{einsatzID}/bearbeiten")]
+         [HttpPut]
+         [Route("api/einsatz/{einsatzID}/bearbeiten")]
         public HttpResponseMessage PutAzubiEinsatz([FromUri] int einsatzID, [FromBody] Einsaetze einsatz)
         {
             using (var context = new EinsatzplanungContext())
@@ -92,6 +92,8 @@ namespace Einsatzplanung.API.Controllers
                     return Request.CreateResponse(HttpStatusCode.NotFound);
                 }
             }
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
+
     }
 }
