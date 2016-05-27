@@ -38,5 +38,26 @@ namespace Einsatzplanung.API.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+        [HttpPut]
+        [Route("api/ausbilder/{ausbilderID}")]
+        public void UpdateAusbilder([FromUri] int ausbilderid, [FromBody] Ausbilder newausbilder)
+        {
+            using (var context = new EinsatzplanungContext())
+            {
+                foreach (var ausbilder in context.Ausbilder)
+                {
+                    if(ausbilder.AusbilderID == ausbilderid)
+                    {
+                        ausbilder.AbteilungID = newausbilder.AbteilungID;
+                        ausbilder.Nachname = newausbilder.Nachname;
+                        ausbilder.Vorname = newausbilder.Vorname;
+                        ausbilder.PersNr = newausbilder.PersNr;
+                        context.SaveChangesAsync();
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
