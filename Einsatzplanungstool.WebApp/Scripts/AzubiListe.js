@@ -2,7 +2,7 @@
 
 function getAzubi()
 {
-	$.getjson(rhost + "azubi/1", function (data) {
+	$.get(rhost + "azubi/1", function (data) {
 		alert("success");
 		$("#azubitabelle").append(azubiAlsHTMLaufbereiten(data));
 
