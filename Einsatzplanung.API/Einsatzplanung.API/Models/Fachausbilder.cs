@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Einsatzplanung.API.Models
 {
+    [Table("fachausbilder")]
     public class Fachausbilder
     {
         [Key]
