@@ -134,14 +134,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Extensions\HtmlExtensions.cs" />
-    <Compile Include="Extensions\RequestExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\sample_einsatzortansicht.css" />
     <Content Include="css\style.css" />
     <Content Include="css\style_flex.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -172,10 +171,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Home\AzubiListe.cshtml" />
-    <Content Include="Views\Home\Einsatzort.cshtml" />
-    <Content Include="Views\Home\Einsatz.cshtml" />
-    <Content Include="Views\Home\Einsatzortansicht.cshtml" />
-    <Content Include="Views\Home\Ausbilder.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
