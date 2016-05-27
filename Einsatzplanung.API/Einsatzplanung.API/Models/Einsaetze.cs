@@ -7,12 +7,12 @@ using System.Web;
 
 namespace Einsatzplanung.API.Models
 {
-    [Table("einsatze")]
+    [Table("einsaetze")]
     public class Einsaetze
     {
         [Key]
         [Column("einsatzID")]
-        public int einsatzId { get; set; }
+        public int einsatzID { get; set; }
 
         [Column("abteilungID")]
         public int abteilungID { get; set; }

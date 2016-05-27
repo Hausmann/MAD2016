@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 
@@ -11,7 +13,7 @@ namespace Einsatzplanung.API.Controllers
     {
       [HttpPost]
       [Route("api/einsatz")]
-      public void PostEinsatz([FromBody] Einsaetze einsatz)
+      public HttpResponseMessage PostEinsatz([FromBody] Einsaetze einsatz)
       {
             if (einsatz != null)
             {
@@ -19,8 +21,11 @@ namespace Einsatzplanung.API.Controllers
                 {
                     context.Einsatz.Add(einsatz);
                     context.SaveChangesAsync();
+                    
                 }
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
-       }
+            return Request.CreateResponse(HttpStatusCode.NotFound);
+        }
     }
 }
