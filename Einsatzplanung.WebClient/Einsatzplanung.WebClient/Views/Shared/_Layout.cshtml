@@ -2,39 +2,40 @@
 
 <!DOCTYPE html>
 <html lang="de">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>@ViewBag.Title - Einsatzplanungstool</title>
-		@Styles.Render("~/css/style.css")
-		@Scripts.Render("~/Scripts/jquery.min.js")
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - Einsatzplanungstool</title>
+	@Styles.Render("~/css/style.css")
+	@Scripts.Render("~/Scripts/jquery.min.js")
+	@Scripts.Render("~/Scripts/AzubiListe.js")
 		@Scripts.Render("~/Scripts/Ausbilder.js")
-	</head>
-	<body>
-		<header>
-			<div id="logo"><img src="~/img/Datev_Logo.png" /></div>
-			<div id="userID">
-				<div id="infoText">Angemeldet als: </div>Mustermann, Max
-			</div>
-			<nav>
-				<ul id="nav-links">
+</head>
+<body>
+	<header>
+		<div id="logo"><img src="~/img/Datev_Logo.png" /></div>
+		<div id="userID">
+			<div id="infoText">Angemeldet als: </div>Mustermann, Max
+		</div>
+		<nav>
+			<ul id="nav-links">
 					@Html.ActionMenuItem("Startseite", "Index", "Home")
 					@Html.ActionMenuItem("Azubi-Liste", "AzubiListe", "Home")
 					@Html.ActionMenuItem("Einsatzort", "Einsatzort", "Home")
 					@Html.ActionMenuItem("Einsatz", "Einsatz", "Home")
 					@Html.ActionMenuItem("Einsatzortansicht", "Einsatzortansicht", "Home")
 					@Html.ActionMenuItem("Ausbilder", "Ausbilder", "Home")
-				</ul>
-			</nav>
-		</header>
-		<div id="shadow">
-			<div id="main">
-				@RenderBody()
-			</div>
-
-			<footer>
-				Footer
-			</footer>
+			</ul>
+		</nav>
+	</header>
+	<div id="shadow">
+		<div id="main">
+			@RenderBody()
 		</div>
-	</body>
+
+		<footer>
+			Footer
+		</footer>
+	</div>
+</body>
 </html>
