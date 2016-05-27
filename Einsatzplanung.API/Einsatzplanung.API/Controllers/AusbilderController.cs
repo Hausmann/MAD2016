@@ -23,11 +23,10 @@ namespace Einsatzplanung.API.Controllers
                         return ausbilder;
                 }
             }
-            return 0;
-        }
             return null;
         }
-    
+
+
         [HttpPost]
         [Route("api/ausbilder")]
         public HttpResponseMessage PostAusbilder([FromBody] Ausbilder ausbilder)
@@ -50,15 +49,15 @@ namespace Einsatzplanung.API.Controllers
             {
                 foreach (var ausbilder in context.Ausbilder)
                 {
-                    if(ausbilder.AusbilderID == ausbilderid)
+                    if (ausbilder.AusbilderID == ausbilderid)
                     {
-                        if(newausbilder.AbteilungID != 0)
+                        if (newausbilder.AbteilungID != 0)
                             ausbilder.AbteilungID = newausbilder.AbteilungID;
-                        if(newausbilder.Nachname != null)
+                        if (newausbilder.Nachname != null)
                             ausbilder.Nachname = newausbilder.Nachname;
-                        if(newausbilder.Vorname != null)
+                        if (newausbilder.Vorname != null)
                             ausbilder.Vorname = newausbilder.Vorname;
-                        if(newausbilder.PersNr != 0)
+                        if (newausbilder.PersNr != 0)
                             ausbilder.PersNr = newausbilder.PersNr;
                         context.SaveChangesAsync();
                         break;
