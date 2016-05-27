@@ -1,5 +1,6 @@
 ﻿using Einsatzplanung.API.Models;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -40,7 +41,12 @@ namespace Einsatzplanung.API.Controllers
         [Route("api/azubi")]
         public HttpResponseMessage PostAzubi([FromBody] Azubi newAzubi)
         {
-            return null;
+            using (var context = new EinsatzplanungContext())
+            {
+                context.Azubis.Add(newAzubi);
+                context.SaveChangesAsync();
+            }
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }
