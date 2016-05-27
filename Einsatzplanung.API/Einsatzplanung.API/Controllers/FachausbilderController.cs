@@ -11,12 +11,16 @@ namespace Einsatzplanung.API.Controllers
        [Route("api/fachausbilder")]
        public HttpResponseMessage PostFachausbilder([FromBody] Fachausbilder fachausbilder)
         {
-            using (var context = new EinsatzplanungContext())
+            if (fachausbilder != null)
             {
-                context.Fachausbilder.Add(fachausbilder);
-                context.SaveChangesAsync();
+                using (var context = new EinsatzplanungContext())
+                {
+                    context.Fachausbilder.Add(fachausbilder);
+                    context.SaveChangesAsync();
+                }
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Request.CreateResponse(HttpStatusCode.NotFound);
         }
         [HttpPut]
         [Route("api/fachausbilder/{id}")]
@@ -24,20 +28,23 @@ namespace Einsatzplanung.API.Controllers
         {
             using (var context = new EinsatzplanungContext())
             {
-                foreach (var fa in context.Fachausbilder)
+                if (newfachausbilder != null)
                 {
-                    if(fa.FachausbilderID == id)
+                    foreach (var fa in context.Fachausbilder)
                     {
-                        if(newfachausbilder.abteilungID != 0)
-                            fa.abteilungID = newfachausbilder.abteilungID;
-                        if(newfachausbilder.Nachname != null)
-                            fa.Nachname = newfachausbilder.Nachname;
-                        if(newfachausbilder.Vorname != null)
-                            fa.Vorname = newfachausbilder.Vorname;
-                        if(fa.PersNr != 0)
-                            fa.PersNr = newfachausbilder.PersNr;
-                        context.SaveChangesAsync();
-                        break;
+                        if (fa.FachausbilderID == id)
+                        {
+                            if (newfachausbilder.abteilungID != 0)
+                                fa.abteilungID = newfachausbilder.abteilungID;
+                            if (string.IsNullOrEmpty(newfachausbilder.Nachname))
+                                fa.Nachname = newfachausbilder.Nachname;
+                            if (string.IsNullOrEmpty(newfachausbilder.Vorname))
+                                fa.Vorname = newfachausbilder.Vorname;
+                            if (fa.PersNr != 0)
+                                fa.PersNr = newfachausbilder.PersNr;
+                            context.SaveChangesAsync();
+                            break;
+                        }
                     }
                 }
             }

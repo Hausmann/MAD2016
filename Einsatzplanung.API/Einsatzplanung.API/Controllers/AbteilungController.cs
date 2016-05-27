@@ -23,23 +23,31 @@ namespace Einsatzplanung.API.Controllers
         [Route("api/abteilung/{abteilungID}")]
         public Abteilung GetAbteilung([FromUri] int abteilungID)
         {
-            using (var context = new EinsatzplanungContext())
+            if (abteilungID != 0)
             {
-                return context.Abteilung.FirstOrDefault((a) => a.AbteilungID == abteilungID);
+                using (var context = new EinsatzplanungContext())
+                {
+                    return context.Abteilung.FirstOrDefault((a) => a.AbteilungID == abteilungID);
+                }
             }
+            return null;
         }
 
         [HttpPost]
         [Route("api/abteilung")]
         public HttpResponseMessage PostAbteilung([FromBody] Abteilung Abteilung)
         {
-            using (var context = new EinsatzplanungContext())
+            if (Abteilung != null)
             {
-                context.Abteilung.Add(Abteilung);
-                context.SaveChangesAsync();
+                using (var context = new EinsatzplanungContext())
+                {
+                    context.Abteilung.Add(Abteilung);
+                    context.SaveChangesAsync();
 
+                }
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Request.CreateResponse(HttpStatusCode.NotFound);
 
         }
 
