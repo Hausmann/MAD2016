@@ -3,22 +3,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--<table id="azubitabelle">
+<table id="azubitabelle">
 	<tr>
 		<th> Name</th>
 		<th> Vorname</th>
-		<th> Pers. Nmr</th>
-		<th> KOE</th>
+		<th> Pers. Nr</th>
 		<th> Heimat-KOE</th>
 		<th> FA</th>
-		<th> Eintrittsdatum</th>
-		<th> VAD</th>
 		<th> Beruf</th>
-		<th> Geburtsdatum</th>
-		<th> Geschlecht</th>
 	</tr>
 
-	<tr>
+	@*<tr>
 		<td> Kurzendorfer</td>
 		<td> Daniel</td>
 		<td> 9456</td>
@@ -100,16 +95,50 @@
 		<td> FI-AE + WINFO Studium</td>
 		<td> 10.07.1995</td>
 		<td> m</td>
-	</tr>
-</table>-->
-
-<button onclick="Test()">
-    Test
-</button>
+	</tr>*@
+</table>
 <script>
-    function Test()
+    getAzubis(2);
+</script>
+<button id="AddAzubi">Add Azubi</button>
+
+
+<div id="myModal" class="modal">
+
+    <div class="modal-content">
+        <span class="close">x</span>
+        <p>Azubi hinzufügen</p>
+        Vorname: <input type="text" name:"Vorname"/>
+        Nachname: <input type="text" name:"Nachname" />
+        KOE: <input type="text" name:"Koe" />
+    </div>
+
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("AddAzubi");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function ()
     {
-        getAzubis(2);
+        modal.style.display = "block";
     }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function ()
+    {
+        modal.style.display = "none";
+    }
+    //ShowAzubi.onclick
+    //{
+    //    getAzubis(2);
+    //}
 	
+   
 </script>

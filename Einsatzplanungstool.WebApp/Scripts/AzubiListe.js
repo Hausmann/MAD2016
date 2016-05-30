@@ -19,9 +19,10 @@ function getAzubi()
 
 function getAzubis(ausbilderId)
 {
-    $.get(rhost + "ausbilder/" + ausbilderId + "/azubis", function (data) {
+    $.get(rhost + "ausbilder/" + ausbilderId + "/azubiAnsicht", function (data) {
         alert("success");
-        for (var i = 0; i < data.length; i++) {
+        for (var i = 0; i < data.length; i++)
+        {
             $("#azubitabelle").append(azubiAlsHTMLaufbereiten(data[i]));
 
         }
@@ -38,10 +39,13 @@ function getAzubis(ausbilderId)
 
 function azubiAlsHTMLaufbereiten(data)
 {
+
 	result = "<tr>";
 	result += "<td>" + data.Vorname + "</td>";
 	result += "<td>" + data.Nachname + "</td>";
-	result += "<td>" + data.persNr + "</td></tr>";
-	
+	result += "<td>" + data.PersNr + "</td>";
+	result += "<td>" + data.HeimatKOE + "</td>";
+	result += "<td>" + data.Fachausbilder + "</td>";
+	result += "<td>" + data.Beruf + "</td></tr>";
 	return result;
 }

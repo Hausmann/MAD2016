@@ -4,9 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<p>Inhaltsbereich</p>
 <div class="tableazubi">
-	<table>
+	<table id="azubiliste">
 		<tr>
 			<th style="width:16vw">KW</th>
 			<th style="width:7vw">10</th>
@@ -83,11 +82,13 @@
 			<td class="einsatz"> </td>
 		</tr>
 	</table>
+</div>
 
-    <ul id="test">
+<ul id="test">
 
-    </ul>
+</ul>
 
-    <script>
-        getAusbilder();
-    </script>
+<script>
+    getAzubiEinsaetze();
+    
+</script>

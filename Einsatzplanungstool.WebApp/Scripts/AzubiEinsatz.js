@@ -1,21 +1,22 @@
 ﻿rhost = "http://localhost:2222/api/";
 
 function getEinsaetze(id) {
-    $.get(rhost + "azubi/" + id + "/einsaetze", function (data) {
-        alert("success");
-        $("#einsatztabelle").append(einsatzAufbereiten(data));
+    $(document).ready(function () {
+        $.get(rhost + "azubiii/" + id + "/einsaetze", function (data) {
+            alert("success");
+            $("#einsatztabelle").append(einsatzAufbereiten(data));
 
-    }).fail(function () {
-        alert("error");
-        var testEinsatz = new Object();
-        testEinsatz.einsatzID = "2";
-        testEinsatz.AbteilungID = "7";
-        testEinsatz.VonDatum = "2016-07-18";
-        testEinsatz.BisDatum = "2016-09-09";
-        testEinsatz.Status = "genehmigt";
-        $("#azubitabelle").append(einsatzAufbereiten(testEinsatz));
+        }).fail(function () {
+            alert("error");
+            var testEinsatz = new Object();
+            testEinsatz.einsatzID = "2";
+            testEinsatz.AbteilungID = "7";
+            testEinsatz.VonDatum = "2016-07-18";
+            testEinsatz.BisDatum = "2016-09-09";
+            testEinsatz.Status = "genehmigt";
+            $("#einsatztabelle").append(einsatzAufbereiten(testEinsatz));
+        });
     });
-
 }
 
 function einsatzAufbereiten(data) {

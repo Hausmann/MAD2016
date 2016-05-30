@@ -35,5 +35,10 @@ namespace Einsatzplanung.WebClient.Controllers
 		{
 			return View();
 		}
+
+        public ActionResult AzubiEinzelAnsicht()
+        {
+            return View();
+        }
 	}
 }
