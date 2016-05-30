@@ -22,9 +22,6 @@ namespace Einsatzplanung.API.Models
 
         [Column("abteilungID")]
         public int abteilungID { get; set;}
-
-        [Column("persNr")]
-        public int PersNr { get; set;}
     }
 
 }
