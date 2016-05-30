@@ -109,31 +109,21 @@
         <p id="texazubihinzufuegen">Azubi hinzufügen</p>
         Vorname: <input type="text" id="Vorname" /><br/>
         Nachname: <input type="text" id="Nachname" /><br/>
-        KOE: <input type="text" id="Koe" /><br />
         Beruf: 
         <select id="Beruf">
-            <option> Fachinformatiker Anwendungsentwicklung</option>
-            <option> Fachinformatiker Systemintegration</option>
-            <option> IT-Systemkaufmann</option>
-            <option> Kaufmann für Dialogmarketing</option>
-            <option> Medientechnologe</option>
-            <option> Elektroniker</option>
         </select><br/>
         Ausbilder:
         <select  id ="Ausbilder">
-            <option> Michael Hausmann </option>
-            <option> Uwe Rithammer</option>
         </select> <br/>
-        <script>
-            //getAusbilderNames();
-            
-        </script>
         Heimatabteilung:
         <select id="Heimatabteilung">
-            <option> BC121 </option>
-            <option> EB122 </option>
         </select><br />
 
+        <script>
+            getAusbilderNames();
+            getAbteilungen();
+            getBerufe();
+        </script>
         Personal Nummer: <input type="text" id="PersNr" /><br/>
         
         <button id ="absenden" type="submit"> Eingaben absenden</button>
@@ -167,7 +157,7 @@
     {
         var vorname = document.getElementById("Vorname").value;
         var nachname = document.getElementById("Nachname").value;
-        var koe = document.getElementById("Koe").value;
+        var beruf = document.getElementById("Beruf");
         var ausbilder = document.getElementById("Ausbilder");
         var heimatabteilung = document.getElementById("Heimatabteilung");
         var persNr = document.getElementById("PersNr").value;
@@ -183,9 +173,9 @@
         var newazubi = {};
         newazubi.Vorname = vorname;
         newazubi.Nachname = nachname;
-        newazubi.BerufID = 2;
-        newazubi.AusbilderID = 2;
-        newazubi.HeimatabteilungID = 6;
+        newazubi.BerufID = beruf.options[beruf.selectedIndex].value;
+        newazubi.AusbilderID = ausbilder.options[ausbilder.selectedIndex].value;
+        newazubi.HeimatabteilungID = heimatabteilung.options[heimatabteilung.selectedIndex].value;
         newazubi.PersNr = persNr;
         
         PostAzubi(JSON.stringify(newazubi));
