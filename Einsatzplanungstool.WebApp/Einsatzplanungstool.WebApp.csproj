@@ -162,6 +162,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\Azubi_add.css" />
     <Content Include="css\style.css" />
     <Content Include="css\style_flex.css" />
     <Content Include="Global.asax" />
