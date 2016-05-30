@@ -106,38 +106,47 @@
 
     <div class="modal-content">
         <span class="close">x</span>
-        <p id="texazubihinzufuegen">Azubi hinzufügen</p>
-        Vorname: <input type="text" name:"Vorname"/><br/>
-        Nachname: <input type="text" name:"Nachname" /><br/>
-        KOE: <input type="text" name:"Koe" /><br />
-        Beruf: 
-        <select name="Beruf">
-            <option> Fachinformatiker Anwendungsentwicklung</option>
-            <option> Fachinformatiker Systemintegration</option>
-            <option> IT-Systemkaufmann</option>
-            <option> Kaufmann für Dialogmarketing</option>
-            <option> Medientechnologe</option>
-            <option> Elektroniker</option>
-        </select><br/>
-        Ausbilder:
-        <select  id ="ausbildercombobox "name="Ausbilder">
-            <option> Michael Hausmann </option>
-            <option> Uwe Rithammer</option>
-        </select> <br/>
-        <script>
-            //getAusbilderNames();
-            
-        </script>
-        Heimatabteilung:
-        <select name="Heimatabteilung">
-            <option> BC121 </option>
-            <option> EB122 </option>
-        </select><br />
+        <center>
+        <div id="texazubihinzufuegen">Azubi hinzufügen</div>
+            </center>
+        <div class="line"><div class="name">Vorname:</div> <input type="text" name:"Vorname"/></div><br/>
+        <div class="line"><div class="name">Nachname:</div> <input type="text" name:"Nachname" /></div><br/>
+        <div class="line">
+            <div class="name">Beruf:</div>
+            <select name="Beruf">
+                <option> Fachinformatiker Anwendungsentwicklung</option>
+                <option> Fachinformatiker Systemintegration</option>
+                <option> IT-Systemkaufmann</option>
+                <option> Kaufmann für Dialogmarketing</option>
+                <option> Medientechnologe</option>
+                <option> Elektroniker</option>
+            </select></div><br />
+        <div class="line">
+            <div class="name">Ausbilder:</div>
+            <select id="ausbildercombobox " name="Ausbilder">
+                <option> Michael Hausmann </option>
+                <option> Uwe Rithammer</option>
+            </select> </div> <br />
+            <script>
+                //getAusbilderNames();
 
-        Personal Nummer: <input type="text" name:"PersNr" /><br/>
+            </script>
+        <div class="line">
+            <div class="name">Heimatabteilung:</div>
+            <select name="Heimatabteilung">
+                <option> BC121 </option>
+                <option> EB122 </option>
+            </select></div><br />
+
+        <div class="line">
         
-        <button id ="absenden" type="submit"> Eingaben absenden</button>
-    </div>
+            <div class="name">Personalnummer:</div><input type="text" name:"PersNr" /></div><br />
+        <center>
+            <button id="absenden" type="submit"> Eingaben absenden</button>
+            </center>
+</div>
+
+
 
 </div>
 <script>
