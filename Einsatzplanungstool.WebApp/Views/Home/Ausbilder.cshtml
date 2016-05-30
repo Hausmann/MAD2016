@@ -5,6 +5,8 @@
 }
 
 <div class="tableazubi">
+    <button onclick="minus4weeks()"> <<< </button>
+    <button onclick="plus4weeks()"> >>> </button>
 	<table id="azubiliste">
 		<tr>
 			<th style="width:16vw">KW</th>
@@ -84,11 +86,8 @@
 	</table>
 </div>
 
-<ul id="test">
-
-</ul>
-
 <script>
+    getWeek(currentdate = new Date);
     getAzubiEinsaetze();
     
 </script>
