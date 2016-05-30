@@ -10,7 +10,8 @@
     @Styles.Render("~/css/Azubi_add.css")
 	@Scripts.Render("~/Scripts/jquery.min.js")
 	@Scripts.Render("~/Scripts/AzubiListe.js")
-		@Scripts.Render("~/Scripts/Ausbilder.js")
+	@Scripts.Render("~/Scripts/Ausbilder.js")
+    @Scripts.Render("~/Scripts/AzubiEinsatz.js")
 </head>
 <body>
 	<header>
@@ -26,6 +27,7 @@
 					@Html.ActionMenuItem("Einsatz", "Einsatz", "Home")
 					@Html.ActionMenuItem("Einsatzortansicht", "Einsatzortansicht", "Home")
 					@Html.ActionMenuItem("Ausbilder", "Ausbilder", "Home")
+                    @Html.ActionMenuItem("EinzelAnsicht", "AzubiEinzelAnsicht", "Home")
 			</ul>
 		</nav>
 	</header>
