@@ -17,16 +17,19 @@ function getAzubi()
 	
 }
 
+function GetAusbilderId()
+{
+    $.get(rhost + "")
+}
 
 function PostAzubi(info)
 {
-    $.ajax
-    ({
+    $.ajax({
         type: "POST",
-        url: "api/azubi",
+        url: rhost + "azubi",
+        contentType: "application/json",
         data: info,
-        success: alert("Succes"),
-        dataType: JSON
+        success: alert("Succes")
     });
 }
 
