@@ -3,119 +3,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table id="azubitabelle">
+<table id="azubitabelle" >
 	<tr>
 		<th> Name</th>
 		<th> Vorname</th>
-		<th> Pers. Nmr</th>
-		<th> KOE</th>
+		<th> Pers. Nr</th>
 		<th> Heimat-KOE</th>
 		<th> FA</th>
-		<th> Eintrittsdatum</th>
-		<th> VAD</th>
 		<th> Beruf</th>
-		<th> Geburtsdatum</th>
-		<th> Geschlecht</th>
 	</tr>
-
-	<tr>
-		<td> Kurzendorfer</td>
-		<td> Daniel</td>
-		<td> 9456</td>
-		<td> C115</td>
-		<td> BC121</td>
-		<td> Brendel, Siegfried</td>
-		<td> 01.09.2015</td>
-		<td> X.X.2018</td>
-		<td> FI-AE + Informatik Studium</td>
-		<td> 1.05.1996</td>
-		<td> m</td>
-	</tr>
-
-	<tr>
-		<td> Oliver</td>
-		<td> Zerinkow</td>
-		<td> 9678</td>
-		<td> C113</td>
-		<td> EB121</td>
-		<td> Musterfrau, Daniela</td>
-		<td> 01.09.2015</td>
-		<td> X.X.2018</td>
-		<td> FI-AE</td>
-		<td> 06.12.1998</td>
-		<td> m</td>
-	</tr>
-
-	<tr>
-		<td> Bernhard</td>
-		<td> Schiffer</td>
-		<td> 9956</td>
-		<td> C113</td>
-		<td> EB241</td>
-		<td> Mustermann, Oliver</td>
-		<td> 01.09.2015</td>
-		<td> X.X.2018</td>
-		<td> FI-AE</td>
-		<td> 10.06.1996</td>
-		<td> m</td>
-	</tr>
-
-	<tr>
-		<td> Gottwald</td>
-		<td> Kevin</td>
-		<td> 9142</td>
-		<td> C112</td>
-		<td> EB745</td>
-		<td> Musterfrau, Heidi</td>
-		<td> 01.09.2015</td>
-		<td> X.X.2018</td>
-		<td> FI-SI</td>
-		<td> 07.02.1993</td>
-		<td> m</td>
-	</tr>
-
-	<tr>
-		<td> Schaub</td>
-		<td> Christoff</td>
-		<td> 9578</td>
-		<td> C111</td>
-		<td> BA1</td>
-		<td> Musterfrau, Katrin</td>
-		<td> 01.09.2015</td>
-		<td> X.X.2018</td>
-		<td> IT-SYS + WINFO Studium</td>
-		<td> 10.07.1996</td>
-		<td> m</td>
-	</tr>
-
-	<tr>
-		<td> Fruth</td>
-		<td> Julian</td>
-		<td> 967</td>
-		<td> C114</td>
-		<td> EB743</td>
-		<td> Mustermann, Herbert</td>
-		<td> 01.09.2015</td>
-		<td> X.X.2018</td>
-		<td> FI-AE + WINFO Studium</td>
-		<td> 10.07.1995</td>
-		<td> m</td>
-	</tr>
-	<!-- hier sollen weitere Azubis geladen werden -->
 </table>
-
-
-<button id="AddAzubi">Add Azubi</button>
-
+<script>
+    getAzubis(2);
+</script>
+<button id="AddAzubi">Azubi hinzufügen</button>
 
 <div id="myModal" class="modal">
 
     <div class="modal-content">
         <span class="close">x</span>
-        <p>Azubi hinzufügen</p>
-        Vorname: <input type="text" name:"Vorname"/>
-        Nachname: <input type="text" name:"Nachname" />
-        KOE: <input type="text" name:"Koe" />
+        <p id="texazubihinzufuegen">Azubi hinzufügen</p>
+        Vorname: <input type="text" id="Vorname" /><br/>
+        Nachname: <input type="text" id="Nachname" /><br/>
+        KOE: <input type="text" id="Koe" /><br />
+        Beruf: 
+        <select id="Beruf">
+            <option> Fachinformatiker Anwendungsentwicklung</option>
+            <option> Fachinformatiker Systemintegration</option>
+            <option> IT-Systemkaufmann</option>
+            <option> Kaufmann für Dialogmarketing</option>
+            <option> Medientechnologe</option>
+            <option> Elektroniker</option>
+        </select><br/>
+        Ausbilder:
+        <select  id ="Ausbilder">
+            <option> Michael Hausmann </option>
+            <option> Uwe Rithammer</option>
+        </select> <br/>
+        <script>
+            //getAusbilderNames();
+            
+        </script>
+        Heimatabteilung:
+        <select id="Heimatabteilung">
+            <option> BC121 </option>
+            <option> EB122 </option>
+        </select><br />
+
+        Personal Nummer: <input type="text" id="PersNr" /><br/>
+        
+        <button id ="absenden" type="submit"> Eingaben absenden</button>
     </div>
 
 </div>
@@ -126,6 +63,7 @@
     // Get the button that opens the modal
     var btn = document.getElementById("AddAzubi");
 
+    var btn_absenden = document.getElementById("absenden");
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
@@ -141,5 +79,33 @@
         modal.style.display = "none";
     }
 
+    btn_absenden.onclick = function()
+    {
+        var vorname = document.getElementById("Vorname").value;
+        var nachname = document.getElementById("Nachname").value;
+        var koe = document.getElementById("Koe").value;
+        var ausbilder = document.getElementById("Ausbilder");
+        var heimatabteilung = document.getElementById("Heimatabteilung");
+        var persNr = document.getElementById("PersNr").value;
+
+        //if(vorname !=null) etc..
+
+        //GetBerufID()
+        //GetAusbilderID()
+        //GetHeimatabteilungID()
+
+       
+        
+        var newazubi = {};
+        newazubi.Vorname = vorname;
+        newazubi.Nachname = nachname;
+        newazubi.BerufID = 2;
+        newazubi.AusbilderID = 2;
+        newazubi.HeimatabteilungID = 6;
+        newazubi.PersNr = persNr;
+        
+        PostAzubi(JSON.stringify(newazubi));
+
+    }
    
 </script>

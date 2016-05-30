@@ -37,6 +37,34 @@ namespace Einsatzplanung.API.Controllers
         }
 
         [HttpGet]
+        [Route("api/ausbilder/{ausbilderID}/azubiAnsicht")]
+        public List<Azubiansicht> GetAzubiAnsicht([FromUri] int ausbilderID)
+        {
+            using (var context = new EinsatzplanungContext())
+            {
+                var query = from aus in context.Ausbilder
+                            join azu in context.Azubis on aus.AusbilderID equals azu.AusbilderID
+                            join abt in context.Abteilung on azu.HeimatabteilungID equals abt.AbteilungID
+                            join beruf in context.Beruf on azu.BerufID equals beruf.BerufID
+                            join fachausbilder in context.Fachausbilder on abt.AbteilungID equals fachausbilder.abteilungID
+                            where ausbilderID == azu.AusbilderID
+                            select new Azubiansicht()
+                            {
+                                Vorname = azu.Vorname,
+                                Nachname = azu.Nachname,
+                                PersNr = azu.PersNr,
+                                HeimatKOE = abt.KOE,
+                                Fachausbilder = fachausbilder.Vorname + " " + fachausbilder.Nachname,
+                                Beruf = beruf.Beschreibung
+                            };
+
+                List<Azubiansicht> azubisZuAusbilder = query.ToList<Azubiansicht>();
+                return azubisZuAusbilder;
+            }
+        }
+
+
+        [HttpGet]
         [Route("api/abteilung/{abteilungsID}/azubis")]
         public List<Abteilungseinsaetze> GetAbteilungsAzubis([FromUri] int abteilungsID)
         {
