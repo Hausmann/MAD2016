@@ -37,6 +37,51 @@ function getAzubis(ausbilderId)
     });
 }
 
+
+function PostAzubi(info)
+{
+    $.ajax
+    ({
+        type: "POST",
+        url: "api/azubi",
+        data: info,
+        success: alert("Succes"),
+        dataType: JSON
+    });
+}
+
+function getAusbilderNames()
+{
+    $.get(rhost + "ausbilder", function (data)
+    {
+        alert("success");
+        $("#ausbildertabelle").append(AddOptionToCombobox(data));
+
+    }).fail(function ()
+    {
+        alert("error");
+    });
+
+}
+
+
+function AddOptionToCombobox(data)
+{
+    var cbausbilder = document.getElementById("ausbildercombobox");
+    for (var i = 0; i < data.length; i++)
+    {
+       var option = document.createElement("option");    
+       option.text = data.Vorname + data.Nachname;
+       option.value = i;
+       cbausbilder.option.AddOptionToCombobox(option);
+    }
+    
+    
+
+
+    
+}
+
 function azubiAlsHTMLaufbereiten(data)
 {
 

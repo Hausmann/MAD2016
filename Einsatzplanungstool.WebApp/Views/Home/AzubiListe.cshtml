@@ -100,17 +100,43 @@
 <script>
     getAzubis(2);
 </script>
-<button id="AddAzubi">Add Azubi</button>
-
+<button id="AddAzubi">Azubi hinzufügen</button>
 
 <div id="myModal" class="modal">
 
     <div class="modal-content">
         <span class="close">x</span>
-        <p>Azubi hinzufügen</p>
-        Vorname: <input type="text" name:"Vorname"/>
-        Nachname: <input type="text" name:"Nachname" />
-        KOE: <input type="text" name:"Koe" />
+        <p id="texazubihinzufuegen">Azubi hinzufügen</p>
+        Vorname: <input type="text" name:"Vorname"/><br/>
+        Nachname: <input type="text" name:"Nachname" /><br/>
+        KOE: <input type="text" name:"Koe" /><br />
+        Beruf: 
+        <select name="Beruf">
+            <option> Fachinformatiker Anwendungsentwicklung</option>
+            <option> Fachinformatiker Systemintegration</option>
+            <option> IT-Systemkaufmann</option>
+            <option> Kaufmann für Dialogmarketing</option>
+            <option> Medientechnologe</option>
+            <option> Elektroniker</option>
+        </select><br/>
+        Ausbilder:
+        <select  id ="ausbildercombobox "name="Ausbilder">
+            <option> Michael Hausmann </option>
+            <option> Uwe Rithammer</option>
+        </select> <br/>
+        <script>
+            //getAusbilderNames();
+            
+        </script>
+        Heimatabteilung:
+        <select name="Heimatabteilung">
+            <option> BC121 </option>
+            <option> EB122 </option>
+        </select><br />
+
+        Personal Nummer: <input type="text" name:"PersNr" /><br/>
+        
+        <button id ="absenden" type="submit"> Eingaben absenden</button>
     </div>
 
 </div>
@@ -121,6 +147,7 @@
     // Get the button that opens the modal
     var btn = document.getElementById("AddAzubi");
 
+    var btn_absenden = document.getElementById("absenden");
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
@@ -135,10 +162,26 @@
     {
         modal.style.display = "none";
     }
-    //ShowAzubi.onclick
-    //{
-    //    getAzubis(2);
-    //}
-	
+
+    btn_absenden.onclick = function()
+    {
+        var vorname = document.getElementsByName("Vorname");
+        var nachname = document.getElementsByName("Nachname");
+        var koe = document.getElementsByName("Koe");
+        var ausbilder = document.getElementsByName("Ausbilder");
+        var heimatabteilung = document.getElementsByName("Heimatabteilung");
+        var persNr = document.getElementsByName("PersNr");
+
+        //if(vorname !=null) etc..
+
+        //GetBerufID()
+        //GetAusbilderID()
+        //GetHeimatabteilungID()
+
+        var newazubi = { "vorname": vorname, "nachname": nachname, "berufID": "2", "ausbilderID": "2", "heimatabteilungID": "6", "persNr": persNr };
+           
+        PostAzubi(newazubi);
+
+    }
    
 </script>
