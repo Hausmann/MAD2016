@@ -1,4 +1,6 @@
 ﻿using Einsatzplanung.API.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -34,12 +36,20 @@ namespace Einsatzplanung.API.Controllers
                             fa.Nachname = newfachausbilder.Nachname;
                         if(newfachausbilder.Vorname != null)
                             fa.Vorname = newfachausbilder.Vorname;
-                        if(fa.PersNr != 0)
-                            fa.PersNr = newfachausbilder.PersNr;
                         context.SaveChangesAsync();
                         break;
                     }
                 }
+            }
+        }
+
+        [HttpGet]
+        [Route("api/fachausbilder")]
+        public List<Fachausbilder> GetAllFachausbilder()
+        {
+            using (var context = new EinsatzplanungContext())
+            {
+                return context.Fachausbilder.ToList<Fachausbilder>();
             }
         }
     }

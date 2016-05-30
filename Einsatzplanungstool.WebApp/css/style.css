@@ -390,3 +390,22 @@ table
 {
     text-align:center;
 }
+
+.notunderline
+{
+    text-decoration:none;
+    color:black;
+}
+
+tr:nth-child(odd)		{ background-color:#eee; }
+tr:nth-child(even)		{ background-color:#fff; }
+
+tr:hover
+{
+    background-color:rgb(140, 219, 100);
+}
+
+tr:first-of-type:hover
+{
+    background-color:#eee;
+}
