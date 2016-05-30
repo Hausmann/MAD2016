@@ -22,32 +22,45 @@
 
     <div class="modal-content">
         <span class="close">x</span>
-        <p id="texazubihinzufuegen">Azubi hinzufügen</p>
-        Vorname: <input type="text" id="Vorname" /><br/>
-        Nachname: <input type="text" id="Nachname" /><br/>
-        Beruf: 
-        <select id="Beruf">
-        </select><br/>
-        Ausbilder:
-        <select  id ="Ausbilder">
-        </select> <br/>
-        Heimatabteilung:
-        <select id="Heimatabteilung">
-        </select><br />
-
-        <script>
-            getAusbilderNames();
-            getAbteilungen();
-            getBerufe();
-        </script>
-        Personal Nummer: <input type="text" id="PersNr" /><br/>
+        <div id="texazubihinzufuegen">Azubi hinzufügen</div>
         <div class="line">
-        
-            <div class="name">Personalnummer:</div><input type="text" name:"PersNr" /></div><br />
-        <center>
-            <button id="absenden" type="submit"> Eingaben absenden</button>
+            <div class="name">
+                Vorname:
+            </div><input type="text" id="Vorname" />
+        </div><br/>
+        <div class="line">
+            <div class="name">
+                Nachname:
+            </div><input type="text" id="Nachname" />
+        </div><br />
+        <div class="line">
+            <div class="name">
+                Beruf:
+            </div><select id="Beruf"></select>
+        </div><br />
+        <div class="line">
+            <div class="name">
+                Ausbilder:
+            </div><select id="Ausbilder"></select>
+        </div> <br />
+        <div class="line">
+            <div class="name">
+                Heimatabteilung:
+            </div><select id="Heimatabteilung"></select>
+        </div><br />
+
+            <script>
+                getAusbilderNames();
+                getAbteilungen();
+                getBerufe();
+            </script>
+        <div class="line">
+            <div class="name">Personalnummer:</div><input type="text" id="PersNr" />
+            </div><br />
+            <center>
+                <button id="absenden" type="submit"> Eingaben absenden</button>
             </center>
-    </div>
+        </div>
 
 </div>
 <script>
