@@ -87,11 +87,15 @@ function azubiAlsHTMLaufbereiten(data)
 {
 
     result = "<tr>";
-    result += "<td><a href='AzubiEinzelAnsicht' class='notunderline'>" + data.Vorname + "</a></td>";
-    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Nachname + "</a></td>";
-    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.PersNr + "</a></td>";
-    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.HeimatKOE + "</a></td>";
-    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Fachausbilder + "</a></td>";
-    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Beruf + "</a></td></tr>";
+    result += "<td><a href='AzubiEinzelAnsicht' class='notunderline' onclick='azubiClicked()'>" + data.Vorname + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline' onclick='azubiClicked()'>" + data.Nachname + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline' onclick='azubiClicked()'>" + data.PersNr + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline' onclick='azubiClicked()'>" + data.HeimatKOE + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline' onclick='azubiClicked()'>" + data.Fachausbilder + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline' onclick='azubiClicked()'>" + data.Beruf + "</a></td></tr>";
 	return result;
+}
+
+function azubiClicked(dataObject){
+    sessionStorage.setItem("personalNr", "hier übergabeparameter");
 }

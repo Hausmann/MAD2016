@@ -30,3 +30,7 @@ function einsatzAufbereiten(data) {
 
     return result;
 }
+
+function getPersNr() {
+    return "<p>" + sessionStorage.getItem("personalNr") + "</p>";
+}
