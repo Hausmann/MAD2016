@@ -23,6 +23,10 @@ function getAzubis(ausbilderId)
         for (var i = 0; i < data.length; i++)
         {
             $("#azubitabelle").append(azubiAlsHTMLaufbereiten(data[i]));
+function GetAusbilderId()
+{
+    $.get(rhost + "")
+}
 
         }
 
@@ -39,13 +43,12 @@ function getAzubis(ausbilderId)
 
 function PostAzubi(info)
 {
-    $.ajax
-    ({
+    $.ajax({
         type: "POST",
-        url: "api/azubi",
+        url: rhost + "azubi",
+        contentType: "application/json",
         data: info,
-        success: alert("Succes"),
-        dataType: JSON
+        success: alert("Succes")
     });
 }
 
