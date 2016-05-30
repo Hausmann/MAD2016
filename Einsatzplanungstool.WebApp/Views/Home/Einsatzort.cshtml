@@ -9,7 +9,7 @@
 	<p>KOE: <input type="text" name="koe" /></p>
 	<p>
 		Beauftragter:
-		<select name="beauftragter">
+		<select name="beauftragter" id="BeauftragterSelect">
 			@*TODO*@
 		</select>
 	</p>
@@ -19,3 +19,7 @@
 	<p><input type="submit" value="neuen Einsatzort erstellen" /></p>
 </form>
 
+
+<script>
+    getNameAsOption("ausbilder", "BeauftragterSelect");
+</script>

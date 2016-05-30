@@ -65,5 +65,16 @@ namespace Einsatzplanung.API.Controllers
                 }
             }
         }
+
+
+        [HttpGet]
+        [Route("api/ausbilder")]
+        public List<Ausbilder> GetAllAusbilder()
+        {
+            using (var context = new EinsatzplanungContext())
+            {
+                return context.Ausbilder.ToList<Ausbilder>();
+            }
+        }
     }
 }

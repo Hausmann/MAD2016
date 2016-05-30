@@ -42,5 +42,15 @@ namespace Einsatzplanung.API.Controllers
                 }
             }
         }
+
+        [HttpGet]
+        [Route("api/fachausbilder")]
+        public List<Fachausbilder> GetAllFachausbilder()
+        {
+            using (var context = new EinsatzplanungContext())
+            {
+                return context.Fachausbilder.ToList<Fachausbilder>();
+            }
+        }
     }
 }
