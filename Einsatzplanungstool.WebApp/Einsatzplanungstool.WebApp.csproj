@@ -153,6 +153,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Abteilung.cs" />
+    <Compile Include="Models\Abteilungseinsaetze.cs" />
     <Compile Include="Models\Ausbilder.cs" />
     <Compile Include="Models\Azubi.cs" />
     <Compile Include="Models\Einsaetze.cs" />
@@ -191,6 +192,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Add_Azubi_Test.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

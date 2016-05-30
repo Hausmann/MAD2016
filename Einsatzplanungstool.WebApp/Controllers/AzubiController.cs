@@ -1,4 +1,5 @@
 ﻿using Einsatzplanung.API.Models;
+using Einsatzplanungstool.WebApp.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -37,14 +38,25 @@ namespace Einsatzplanung.API.Controllers
 
         [HttpGet]
         [Route("api/abteilung/{abteilungsID}/azubis")]
-        public List<Azubi> GetAbteilungsAzubis([FromUri] int abteilungsID)
+        public List<Abteilungseinsaetze> GetAbteilungsAzubis([FromUri] int abteilungsID)
         {
             List<Azubi> listAzubisMitEinsatzInAbteilung = new List<Azubi>();
             using (var context = new EinsatzplanungContext())
             {
-                
+                var query = from abt in context.Abteilung
+                            join e in context.Einsatz on abt.AbteilungID equals e.AbteilungID
+                            join a in context.Azubis on e.AzubiID equals a.AzubiID
+                            where abteilungsID == e.AbteilungID
+                            select new Abteilungseinsaetze()
+                            {
+                                derAzubi = a,
+                                derEinsatz = e
+                            };
+
+                List<Abteilungseinsaetze> listAll = query.ToList<Abteilungseinsaetze>();
+
+                return listAll;
             }
-            return null;
         }
 
 
