@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using Einsatzplanungstool.WebApp.Models;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Einsatzplanung.API.Models
