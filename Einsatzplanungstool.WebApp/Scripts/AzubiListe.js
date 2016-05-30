@@ -17,12 +17,81 @@ function getAzubi()
 	
 }
 
+function getAzubis(ausbilderId)
+{
+    $.get(rhost + "ausbilder/" + ausbilderId + "/azubiAnsicht", function (data) {
+        for (var i = 0; i < data.length; i++)
+        {
+            $("#azubitabelle").append(azubiAlsHTMLaufbereiten(data[i]));
+function GetAusbilderId()
+{
+    $.get(rhost + "")
+}
+
+        }
+
+    }).fail(function () {
+        alert("error");
+        var testazubi = new Object();
+        testazubi.Nachname = "Mustermann";
+        testazubi.Vorname = "Max";
+        testazubi.AzubiID = 11;
+        $("#azubitabelle").append(azubiAlsHTMLaufbereiten(testazubi));
+    });
+}
+
+
+function PostAzubi(info)
+{
+    $.ajax({
+        type: "POST",
+        url: rhost + "azubi",
+        contentType: "application/json",
+        data: info,
+        success: alert("Succes")
+    });
+}
+
+function getAusbilderNames()
+{
+    $.get(rhost + "ausbilder", function (data)
+    {
+        $("#ausbildertabelle").append(AddOptionToCombobox(data));
+
+    }).fail(function ()
+    {
+        alert("error");
+    });
+
+}
+
+
+function AddOptionToCombobox(data)
+{
+    var cbausbilder = document.getElementById("ausbildercombobox");
+    for (var i = 0; i < data.length; i++)
+    {
+       var option = document.createElement("option");    
+       option.text = data.Vorname + data.Nachname;
+       option.value = i;
+       cbausbilder.option.AddOptionToCombobox(option);
+    }
+    
+    
+
+
+    
+}
+
 function azubiAlsHTMLaufbereiten(data)
 {
-	result = "<tr>";
-	result += "<td>" + data.Vorname + "</td>";
-	result += "<td>" + data.Nachname + "</td>";
-	result += "<td>" + data.AzubiID + "</td></tr>";
-	
+
+    result = "<tr>";
+    result += "<td><a href='AzubiEinzelAnsicht' class='notunderline'>" + data.Vorname + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Nachname + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.PersNr + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.HeimatKOE + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Fachausbilder + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Beruf + "</a></td></tr>";
 	return result;
 }

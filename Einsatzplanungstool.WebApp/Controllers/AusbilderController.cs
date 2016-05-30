@@ -26,6 +26,22 @@ namespace Einsatzplanung.API.Controllers
             return null;
         }
 
+        [HttpGet]
+        [Route("api/ausbilder")]
+        public List<Ausbilder> GetAllAusbilder()
+        {
+            List<Ausbilder> Ausbilder = new List<Ausbilder>();
+            using (var context = new EinsatzplanungContext())
+            {
+                foreach (var ausbilder in context.Ausbilder)
+                {
+                    if (ausbilder != null)
+                        Ausbilder.Add(ausbilder);
+                }
+            }
+            return Ausbilder;
+        }
+
 
         [HttpPost]
         [Route("api/ausbilder")]
