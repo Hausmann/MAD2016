@@ -25,5 +25,3 @@
         cell1.innerHTML = item.Nachname + ", " + item.Vorname;
     }
 //})
-
-

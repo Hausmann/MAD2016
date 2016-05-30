@@ -20,7 +20,6 @@ function getAzubi()
 function getAzubis(ausbilderId)
 {
     $.get(rhost + "ausbilder/" + ausbilderId + "/azubiAnsicht", function (data) {
-        alert("success");
         for (var i = 0; i < data.length; i++)
         {
             $("#azubitabelle").append(azubiAlsHTMLaufbereiten(data[i]));
@@ -54,7 +53,6 @@ function getAusbilderNames()
 {
     $.get(rhost + "ausbilder", function (data)
     {
-        alert("success");
         $("#ausbildertabelle").append(AddOptionToCombobox(data));
 
     }).fail(function ()
@@ -85,12 +83,12 @@ function AddOptionToCombobox(data)
 function azubiAlsHTMLaufbereiten(data)
 {
 
-	result = "<tr>";
-	result += "<td>" + data.Vorname + "</td>";
-	result += "<td>" + data.Nachname + "</td>";
-	result += "<td>" + data.PersNr + "</td>";
-	result += "<td>" + data.HeimatKOE + "</td>";
-	result += "<td>" + data.Fachausbilder + "</td>";
-	result += "<td>" + data.Beruf + "</td></tr>";
+    result = "<tr>";
+    result += "<td><a href='AzubiEinzelAnsicht' class='notunderline'>" + data.Vorname + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Nachname + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.PersNr + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.HeimatKOE + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Fachausbilder + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Beruf + "</a></td></tr>";
 	return result;
 }
