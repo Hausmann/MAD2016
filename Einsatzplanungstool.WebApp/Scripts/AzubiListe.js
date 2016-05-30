@@ -59,6 +59,7 @@ function getAusbilderNames()
     {
         alert("success");
         $("#ausbildertabelle").append(AddOptionToComboboxAusbilder(data));
+        $("#ausbildertabelle").append(AddOptionToCombobox(data));
 
     }).fail(function ()
     {
@@ -94,13 +95,13 @@ function AddOptionToComboboxAusbilder(data)
     var cbausbilder = document.getElementById("Ausbilder");
     for (var i = 0; i < data.length; i++)
     {
-        var option = document.createElement("option");    
+       var option = document.createElement("option");    
         option.text = data[i].Vorname + " " + data[i].Nachname;
         option.value = data[i].AusbilderId;
         cbausbilder.add(option);
     }
-}
-
+    }
+    
 function AddOptionToComboboxBerufe(data) {
     var cbausbilder = document.getElementById("Beruf");
     for (var i = 0; i < data.length; i++)
@@ -111,7 +112,7 @@ function AddOptionToComboboxBerufe(data) {
         cbausbilder.add(option);
     }
 }
-    
+
 function AddOptionToComboboxAbteilungen(data)
 {
     var cbabteilung = document.getElementById("Heimatabteilung");
@@ -124,17 +125,17 @@ function AddOptionToComboboxAbteilungen(data)
     }
 }
 
- 
+    
 
 function azubiAlsHTMLaufbereiten(data)
 {
 
 	result = "<tr>";
-	result += "<td>" + data.Vorname + "</td>";
-	result += "<td>" + data.Nachname + "</td>";
-	result += "<td>" + data.PersNr + "</td>";
-	result += "<td>" + data.HeimatKOE + "</td>";
-	result += "<td>" + data.Fachausbilder + "</td>";
-	result += "<td>" + data.Beruf + "</td></tr>";
+    result += "<td><a href='AzubiEinzelAnsicht' class='notunderline'>" + data.Vorname + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Nachname + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.PersNr + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.HeimatKOE + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Fachausbilder + "</a></td>";
+    result += "<td><a href='AzubiEinzelAnsicht'class='notunderline'>" + data.Beruf + "</a></td></tr>";
 	return result;
 }
