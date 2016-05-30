@@ -19,7 +19,8 @@ function getAzubi()
 
 function getAzubis(ausbilderId)
 {
-    $.get(rhost + "ausbilder/" + ausbilderId + "/azubiAnsicht", function (data) {
+    $.get(rhost + "ausbilder/" + ausbilderId + "/azubiAnsicht", function (data)
+    {
         for (var i = 0; i < data.length; i++)
         {
             $("#azubitabelle").append(azubiAlsHTMLaufbereiten(data[i]));
@@ -32,11 +33,6 @@ function GetAusbilderId()
 
     }).fail(function () {
         alert("error");
-        var testazubi = new Object();
-        testazubi.Nachname = "Mustermann";
-        testazubi.Vorname = "Max";
-        testazubi.AzubiID = 11;
-        $("#azubitabelle").append(azubiAlsHTMLaufbereiten(testazubi));
     });
 }
 
@@ -56,7 +52,7 @@ function getAusbilderNames()
 {
     $.get(rhost + "ausbilder", function (data)
     {
-        $("#ausbildertabelle").append(AddOptionToCombobox(data));
+        $("#ausbildertabelle").append(AddOptionToComboboxAusbilder(data));
 
     }).fail(function ()
     {
@@ -65,23 +61,64 @@ function getAusbilderNames()
 
 }
 
+function getBerufe() {
+    $.get(rhost + "berufe", function (data)
+    {   
+        $("#berufetabelle").append(AddOptionToComboboxBerufe(data));
+    }).fail(function () {
+        alert("error");
+    });
+}
 
-function AddOptionToCombobox(data)
+
+
+function getAbteilungen()
 {
-    var cbausbilder = document.getElementById("ausbildercombobox");
+    $.get(rhost + "abteilungen", function (data)
+    {
+        $("#abteilungentabelle").append(AddOptionToComboboxAbteilungen(data));
+    }).fail(function () {
+        alert("error");
+    });
+}
+
+
+function AddOptionToComboboxAusbilder(data)
+{
+    var cbausbilder = document.getElementById("Ausbilder");
     for (var i = 0; i < data.length; i++)
     {
        var option = document.createElement("option");    
-       option.text = data.Vorname + data.Nachname;
-       option.value = i;
-       cbausbilder.option.AddOptionToCombobox(option);
+        option.text = data[i].Vorname + " " + data[i].Nachname;
+        option.value = data[i].AusbilderID;
+        cbausbilder.add(option);
+    }
     }
     
-    
-
-
-    
+function AddOptionToComboboxBerufe(data) {
+    var cbausbilder = document.getElementById("Beruf");
+    for (var i = 0; i < data.length; i++)
+    {
+        var option = document.createElement("option");
+        option.text = data[i].Beschreibung;
+        option.value = data[i].BerufID;
+        cbausbilder.add(option);
+    }
 }
+
+function AddOptionToComboboxAbteilungen(data)
+{
+    var cbabteilung = document.getElementById("Heimatabteilung");
+    for (var i = 0; i < data.length; i++)
+    {
+        var option = document.createElement("option");
+        option.text = data[i].KOE + ", " + data[i].Beschreibung;
+        option.value = data[i].AbteilungID;
+        cbabteilung.add(option);
+    }
+}
+
+    
 
 function azubiAlsHTMLaufbereiten(data)
 {

@@ -110,5 +110,21 @@ namespace Einsatzplanung.API.Controllers
                 return context.Azubis.ToList<Azubi>();
             }
         }
+
+        [HttpGet]
+        [Route("api/berufe")]
+        public List<Beruf> GetAllBerufe()
+        {
+            List<Beruf> ListBerufe = new List<Beruf>();
+            using (var context = new EinsatzplanungContext())
+            {
+                foreach (var item in context.Beruf)
+                {
+                    if (item != null)
+                        ListBerufe.Add(item);
+                }
+                return ListBerufe;
+            }
+        }
     }
 }
