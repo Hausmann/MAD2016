@@ -33,11 +33,6 @@ function GetAusbilderId()
 
     }).fail(function () {
         alert("error");
-        var testazubi = new Object();
-        testazubi.Nachname = "Mustermann";
-        testazubi.Vorname = "Max";
-        testazubi.AzubiID = 11;
-        $("#azubitabelle").append(azubiAlsHTMLaufbereiten(testazubi));
     });
 }
 
@@ -59,7 +54,6 @@ function getAusbilderNames()
     {
         alert("success");
         $("#ausbildertabelle").append(AddOptionToComboboxAusbilder(data));
-        $("#ausbildertabelle").append(AddOptionToCombobox(data));
 
     }).fail(function ()
     {
@@ -97,7 +91,7 @@ function AddOptionToComboboxAusbilder(data)
     {
        var option = document.createElement("option");    
         option.text = data[i].Vorname + " " + data[i].Nachname;
-        option.value = data[i].AusbilderId;
+        option.value = data[i].AusbilderID;
         cbausbilder.add(option);
     }
     }
