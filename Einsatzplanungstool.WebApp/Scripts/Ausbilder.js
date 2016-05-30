@@ -1,19 +1,29 @@
-﻿$(document).ready(function () {
+﻿//$(document).ready(function () {
 
     var base = "http://localhost:2222/api/";
 
-    function getAusbilder() {
+    function getAzubiEinsaetze() {
+        var uri = base + "azubi";
+        var i = 1;
+        var table = document.getElementById("azubiliste");
+
         $.getJSON(uri)
           .done(function (data) {
-              // On success, 'data' contains a list of products.
+              // On success, 'data' contains a list of the results.
               $.each(data, function (key, item) {
-                  // Add a list item for the product.
-                  $('<li>', { text: formatItem(item) }).appendTo($('#test'));
+                  // Adds results in the table.
+                  var row = table.insertRow(i);
+                  formatItem(item, row);
+                  i++;
               });
           });
     }
 
-    function formatItem(item) {
-        return item.Name + ': $' + item.Price;
+    function formatItem(item, row) {
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = item.Nachname + ", " + item.Vorname;
     }
-})
+//})
+
+

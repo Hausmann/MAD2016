@@ -71,5 +71,16 @@ namespace Einsatzplanung.API.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+
+        [HttpGet]
+        [Route("api/azubi")]
+        public List<Azubi> GetAllAzubis()
+        {
+            using (var context = new EinsatzplanungContext())
+            {
+                return context.Azubis.ToList<Azubi>();
+            }
+        }
     }
 }
